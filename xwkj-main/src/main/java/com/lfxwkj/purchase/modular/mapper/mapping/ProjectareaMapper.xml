@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfxwkj.purchase.modular.mapper.ProjectareaMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Projectarea">
+                    <id column="id" property="id"/>
+                    <result column="areaType" property="areaType"/>
+                    <result column="areaName" property="areaName"/>
+                    <result column="areaLatter" property="areaLatter"/>
+                    <result column="status" property="status"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id AS "id", areaType AS "areaType", areaName AS "areaName", areaLatter AS "areaLatter", status AS "status"
+        </sql>
+
+
+    <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectareaResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectareaParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectarea where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectareaParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectarea where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectareaResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectareaParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectarea where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectareaParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectarea where 1 = 1
+    </select>
+
+</mapper>

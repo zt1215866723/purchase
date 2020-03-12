@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="guns-base-auth" />
+        <module name="guns-base-timers" />
+        <module name="xwkj-gen" />
+        <module name="xwkj-main" />
+        <module name="guns-sys" />
+        <module name="guns-base" />
+        <module name="guns-base-sms" />
+        <module name="guns-vip-gen" />
+        <module name="xwkj-base-auth" />
+        <module name="xwkj-sys" />
+        <module name="guns-base-email" />
+        <module name="xwkj-base" />
+        <module name="guns-vip-main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="guns-base" target="1.8" />
+      <module name="guns-base-auth" target="1.8" />
+      <module name="guns-base-email" target="1.8" />
+      <module name="guns-base-sms" target="1.8" />
+      <module name="guns-base-support" target="1.8" />
+      <module name="guns-base-timers" target="1.8" />
+      <module name="guns-sys" target="1.8" />
+      <module name="guns-vip-gen" target="1.8" />
+      <module name="guns-vip-main" target="1.8" />
+      <module name="purchase" target="1.8" />
+      <module name="xwkj-base" target="1.8" />
+      <module name="xwkj-base-auth" target="1.8" />
+      <module name="xwkj-base-support" target="1.8" />
+      <module name="xwkj-business" target="1.8" />
+      <module name="xwkj-gen" target="1.8" />
+      <module name="xwkj-main" target="1.8" />
+      <module name="xwkj-purchase" target="1.8" />
+      <module name="xwkj-purchase (1) (com.lfxwkj.purchase)" target="1.8" />
+      <module name="xwkj-sys" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="guns-base" options="-parameters" />
+      <module name="guns-base-auth" options="-parameters" />
+      <module name="guns-base-email" options="-parameters" />
+      <module name="guns-base-sms" options="-parameters" />
+      <module name="guns-base-timers" options="-parameters" />
+      <module name="guns-sys" options="-parameters" />
+      <module name="guns-vip-gen" options="-parameters" />
+      <module name="guns-vip-main" options="-parameters" />
+      <module name="xwkj-base" options="-parameters" />
+      <module name="xwkj-base-auth" options="-parameters" />
+      <module name="xwkj-business" options="-parameters" />
+      <module name="xwkj-gen" options="-parameters" />
+      <module name="xwkj-main" options="-parameters" />
+      <module name="xwkj-purchase" options="-parameters" />
+      <module name="xwkj-purchase (1) (com.lfxwkj.purchase)" options="-parameters" />
+      <module name="xwkj-sys" options="-parameters" />
+    </option>
+  </component>
+</project>

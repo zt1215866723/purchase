@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfxwkj.purchase.modular.mapper.SalespersonMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Salesperson">
+                    <id column="id" property="id"/>
+                    <result column="name" property="name"/>
+                    <result column="picUrl" property="picUrl"/>
+                    <result column="tel" property="tel"/>
+                    <result column="weChatNo" property="weChatNo"/>
+                    <result column="QRCodeUrl" property="QRCodeUrl"/>
+                    <result column="goodNum" property="goodNum"/>
+                    <result column="serviceNum" property="serviceNum"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id AS "id", name AS "name", picUrl AS "picUrl", tel AS "tel", weChatNo AS "weChatNo", QRCodeUrl AS "QRCodeUrl", goodNum AS "goodNum", serviceNum AS "serviceNum"
+        </sql>
+
+
+    <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.SalespersonResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.SalespersonParam">
+        select
+        <include refid="Base_Column_List"/>
+        from salesperson where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.SalespersonParam">
+        select
+        <include refid="Base_Column_List"/>
+        from salesperson where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.SalespersonResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.SalespersonParam">
+        select
+        <include refid="Base_Column_List"/>
+        from salesperson where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.SalespersonParam">
+        select
+        <include refid="Base_Column_List"/>
+        from salesperson where 1 = 1
+    </select>
+
+</mapper>

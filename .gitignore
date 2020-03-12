@@ -1,0 +1,6 @@
+# Project exclude paths
+/xwkj-base-support/xwkj-base/target/
+/xwkj-base-support/xwkj-base-auth/target/
+/xwkj-base-support/xwkj-gen/target/
+/xwkj-base-support/xwkj-sys/target/
+/xwkj-main/target/

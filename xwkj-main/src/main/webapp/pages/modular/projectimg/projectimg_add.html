@@ -1,0 +1,51 @@
+@layout("/common/_form.html",{js:["/assets/assets/projectimg/projectimg_add.js"]}){
+
+<form class="layui-form" id="projectimgForm" lay-filter="projectimgForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="id" type="hidden"/>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="projectID" name="projectID" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">1 图片 2 视频 3全景<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="imgType" name="imgType" placeholder="请输入1 图片 2 视频 3全景" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">效果图、配套图、实景图等<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="imgClass" name="imgClass" placeholder="请输入效果图、配套图、实景图等" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="imgUrl" name="imgUrl" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">默认为0   值越大越靠前<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="orderNum" name="orderNum" placeholder="请输入默认为0   值越大越靠前" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+
+</form>
+
+@}

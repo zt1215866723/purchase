@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfxwkj.purchase.modular.mapper.HouselayoutimgMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Houselayoutimg">
+                    <id column="id" property="id"/>
+                    <result column="houseLayID" property="houseLayID"/>
+                    <result column="imgUrl" property="imgUrl"/>
+                    <result column="isMain" property="isMain"/>
+                    <result column="orderNum" property="orderNum"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id AS "id", houseLayID AS "houseLayID", imgUrl AS "imgUrl", isMain AS "isMain", orderNum AS "orderNum"
+        </sql>
+
+
+    <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.HouselayoutimgResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutimgParam">
+        select
+        <include refid="Base_Column_List"/>
+        from houselayoutimg where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutimgParam">
+        select
+        <include refid="Base_Column_List"/>
+        from houselayoutimg where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.HouselayoutimgResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutimgParam">
+        select
+        <include refid="Base_Column_List"/>
+        from houselayoutimg where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutimgParam">
+        select
+        <include refid="Base_Column_List"/>
+        from houselayoutimg where 1 = 1
+    </select>
+
+</mapper>

@@ -1,0 +1,121 @@
+@layout("/common/_form.html",{js:["/assets/assets/infolist/infolist_add.js"]}){
+
+<form class="layui-form" id="infolistForm" lay-filter="infolistForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="id" type="hidden"/>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">1、新闻
+            2、公告
+            3、项目新闻<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="infoType" name="infoType" placeholder="请输入1、新闻
+            2、公告
+            3、项目新闻" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="projectID" name="projectID" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="title" name="title" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="listTitle" name="listTitle" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="listPicUrl" name="listPicUrl" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="tagLabel" name="tagLabel" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="abstract" name="abstract" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">消息置顶级别，默认为0，值越大，越靠前。后台、前台该类信息显示，根据固顶级别 、发布时间  降序进行排序显示<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="topLevel" name="topLevel" placeholder="请输入消息置顶级别，默认为0，值越大，越靠前。后台、前台该类信息显示，根据固顶级别 、发布时间  降序进行排序显示" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="topTime" name="topTime" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="content" name="content" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="createTime" name="createTime" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="createUserId" name="createUserId" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">0 删除 1发布 2暂存<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="status" name="status" placeholder="请输入0 删除 1发布 2暂存" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="readNum" name="readNum" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="goodNum" name="goodNum" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">默认值0  不轮播，1则轮播显示。（注：轮播默认显示状态为1的前几个）<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="isPlay" name="isPlay" placeholder="请输入默认值0  不轮播，1则轮播显示。（注：轮播默认显示状态为1的前几个）" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+
+</form>
+
+@}

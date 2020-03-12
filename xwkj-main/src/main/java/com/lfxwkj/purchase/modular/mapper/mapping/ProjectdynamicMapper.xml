@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfxwkj.purchase.modular.mapper.ProjectdynamicMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Projectdynamic">
+                    <id column="id" property="id"/>
+                    <result column="projectId" property="projectId"/>
+                    <result column="dynamicType" property="dynamicType"/>
+                    <result column="title" property="title"/>
+                    <result column="dynamicDate" property="dynamicDate"/>
+                    <result column="content" property="content"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id AS "id", projectId AS "projectId", dynamicType AS "dynamicType", title AS "title", dynamicDate AS "dynamicDate", content AS "content"
+        </sql>
+
+
+    <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectdynamicResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectdynamicParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectdynamic where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectdynamicParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectdynamic where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectdynamicResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectdynamicParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectdynamic where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectdynamicParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectdynamic where 1 = 1
+    </select>
+
+</mapper>

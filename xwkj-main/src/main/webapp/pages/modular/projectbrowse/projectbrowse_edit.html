@@ -1,0 +1,57 @@
+@layout("/common/_form.html",{js:["/assets/assets/projectbrowse/projectbrowse_edit.js"]}){
+
+<form class="layui-form" id="projectbrowseForm" lay-filter="projectbrowseForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="id" type="hidden"/>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="clientID" name="clientID" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">楼盘的项目的主键<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="projectID" name="projectID" placeholder="请输入楼盘的项目的主键" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">数据的添加时间<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="creatTime" name="creatTime" placeholder="请输入数据的添加时间" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">是否已经推荐<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="isRecom" name="isRecom" placeholder="请输入是否已经推荐" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">数据的状态<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="orderNum" name="orderNum" placeholder="请输入数据的状态" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">销售的主键<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="salesID" name="salesID" placeholder="请输入销售的主键" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+
+</form>
+
+@}

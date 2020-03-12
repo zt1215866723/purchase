@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfxwkj.purchase.modular.mapper.ProjectimgMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Projectimg">
+                    <id column="id" property="id"/>
+                    <result column="projectID" property="projectID"/>
+                    <result column="imgType" property="imgType"/>
+                    <result column="imgClass" property="imgClass"/>
+                    <result column="imgUrl" property="imgUrl"/>
+                    <result column="orderNum" property="orderNum"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id AS "id", projectID AS "projectID", imgType AS "imgType", imgClass AS "imgClass", imgUrl AS "imgUrl", orderNum AS "orderNum"
+        </sql>
+
+
+    <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectimgResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectimgParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectimg where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectimgParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectimg where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectimgResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectimgParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectimg where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectimgParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectimg where 1 = 1
+    </select>
+
+</mapper>

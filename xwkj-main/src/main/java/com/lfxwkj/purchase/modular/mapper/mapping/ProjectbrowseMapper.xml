@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfxwkj.purchase.modular.mapper.ProjectbrowseMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Projectbrowse">
+                    <id column="id" property="id"/>
+                    <result column="clientID" property="clientID"/>
+                    <result column="projectID" property="projectID"/>
+                    <result column="creatTime" property="creatTime"/>
+                    <result column="isRecom" property="isRecom"/>
+                    <result column="orderNum" property="orderNum"/>
+                    <result column="salesID" property="salesID"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id AS "id", clientID AS "clientID", projectID AS "projectID", creatTime AS "creatTime", isRecom AS "isRecom", orderNum AS "orderNum", salesID AS "salesID"
+        </sql>
+
+
+    <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectbrowseResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectbrowseParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectbrowse where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectbrowseParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectbrowse where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectbrowseResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectbrowseParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectbrowse where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectbrowseParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectbrowse where 1 = 1
+    </select>
+
+</mapper>

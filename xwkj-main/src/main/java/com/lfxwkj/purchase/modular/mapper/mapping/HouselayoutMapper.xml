@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfxwkj.purchase.modular.mapper.HouselayoutMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Houselayout">
+                    <id column="id" property="id"/>
+                    <result column="projectID" property="projectID"/>
+                    <result column="layoutName" property="layoutName"/>
+                    <result column="room" property="room"/>
+                    <result column="storeyPrice" property="storeyPrice"/>
+                    <result column="buildArea" property="buildArea"/>
+                    <result column="saleStatus" property="saleStatus"/>
+                    <result column="content" property="content"/>
+                    <result column="orderNum" property="orderNum"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id AS "id", projectID AS "projectID", layoutName AS "layoutName", room AS "room", storeyPrice AS "storeyPrice", buildArea AS "buildArea", saleStatus AS "saleStatus", content AS "content", orderNum AS "orderNum"
+        </sql>
+
+
+    <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.HouselayoutResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutParam">
+        select
+        <include refid="Base_Column_List"/>
+        from houselayout where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutParam">
+        select
+        <include refid="Base_Column_List"/>
+        from houselayout where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.HouselayoutResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutParam">
+        select
+        <include refid="Base_Column_List"/>
+        from houselayout where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutParam">
+        select
+        <include refid="Base_Column_List"/>
+        from houselayout where 1 = 1
+    </select>
+
+</mapper>

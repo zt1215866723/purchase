@@ -1,0 +1,71 @@
+@layout("/common/_form.html",{js:["/assets/assets/houselayout/houselayout_edit.js"]}){
+
+<form class="layui-form" id="houselayoutForm" lay-filter="houselayoutForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="id" type="hidden"/>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="projectID" name="projectID" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">如：
+            A2户型<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="layoutName" name="layoutName" placeholder="请输入如：
+            A2户型" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">如：二室二厅一卫<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="room" name="room" placeholder="请输入如：二室二厅一卫" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">如：约75万元/套<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="storeyPrice" name="storeyPrice" placeholder="请输入如：约75万元/套" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">如：105<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="buildArea" name="buildArea" placeholder="请输入如：105" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">该户型销售状态：在售、待售等<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="saleStatus" name="saleStatus" placeholder="请输入该户型销售状态：在售、待售等" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="content" name="content" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">默认值0，数值越大排前<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="orderNum" name="orderNum" placeholder="请输入默认值0，数值越大排前" type="text" class="layui-input" lay-verify="required" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+
+</form>
+
+@}

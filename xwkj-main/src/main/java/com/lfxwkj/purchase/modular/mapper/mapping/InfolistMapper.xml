@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfxwkj.purchase.modular.mapper.InfolistMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Infolist">
+                    <id column="id" property="id"/>
+                    <result column="infoType" property="infoType"/>
+                    <result column="projectID" property="projectID"/>
+                    <result column="title" property="title"/>
+                    <result column="listTitle" property="listTitle"/>
+                    <result column="listPicUrl" property="listPicUrl"/>
+                    <result column="tagLabel" property="tagLabel"/>
+                    <result column="abstract" property="abstract"/>
+                    <result column="topLevel" property="topLevel"/>
+                    <result column="topTime" property="topTime"/>
+                    <result column="content" property="content"/>
+                    <result column="createTime" property="createTime"/>
+                    <result column="createUserId" property="createUserId"/>
+                    <result column="status" property="status"/>
+                    <result column="readNum" property="readNum"/>
+                    <result column="goodNum" property="goodNum"/>
+                    <result column="isPlay" property="isPlay"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id AS "id", infoType AS "infoType", projectID AS "projectID", title AS "title", listTitle AS "listTitle", listPicUrl AS "listPicUrl", tagLabel AS "tagLabel", abstract AS "abstract", topLevel AS "topLevel", topTime AS "topTime", content AS "content", createTime AS "createTime", createUserId AS "createUserId", status AS "status", readNum AS "readNum", goodNum AS "goodNum", isPlay AS "isPlay"
+        </sql>
+
+
+    <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.InfolistResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.InfolistParam">
+        select
+        <include refid="Base_Column_List"/>
+        from infolist where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.InfolistParam">
+        select
+        <include refid="Base_Column_List"/>
+        from infolist where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.InfolistResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.InfolistParam">
+        select
+        <include refid="Base_Column_List"/>
+        from infolist where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.InfolistParam">
+        select
+        <include refid="Base_Column_List"/>
+        from infolist where 1 = 1
+    </select>
+
+</mapper>
