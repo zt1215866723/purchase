@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfxwkj.purchase.mapper.DiccontentMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Diccontent">
+                    <id column="id" property="id"/>
+                    <result column="typeID" property="typeID"/>
+                    <result column="name" property="name"/>
+                    <result column="orderNum" property="orderNum"/>
+                    <result column="memo" property="memo"/>
+                    <result column="state" property="state"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id AS "id", typeID AS "typeID", name AS "name", orderNum AS "orderNum", memo AS "memo", state AS "state"
+        </sql>
+
+
+    <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.DiccontentResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.DiccontentParam">
+        select
+        <include refid="Base_Column_List"/>
+        from diccontent where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.DiccontentParam">
+        select
+        <include refid="Base_Column_List"/>
+        from diccontent where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.DiccontentResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.DiccontentParam">
+        select
+        <include refid="Base_Column_List"/>
+        from diccontent where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.DiccontentParam">
+        select
+        <include refid="Base_Column_List"/>
+        from diccontent where 1 = 1
+    </select>
+
+</mapper>
