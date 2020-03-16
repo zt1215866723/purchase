@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lfxwkj.purchase.mapper.ProjectinfoMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Projectinfo">
+                    <id column="id" property="id"/>
+                    <result column="areaId" property="areaId"/>
+                    <result column="NAME" property="name"/>
+                    <result column="recordName" property="recordName"/>
+                    <result column="price" property="price"/>
+                    <result column="Tel" property="Tel"/>
+                    <result column="address" property="address"/>
+                    <result column="addrLng" property="addrLng"/>
+                    <result column="addrLat" property="addrLat"/>
+                    <result column="propertyType" property="propertyType"/>
+                    <result column="projectAdv" property="projectAdv"/>
+                    <result column="buildType" property="buildType"/>
+                    <result column="renovation" property="renovation"/>
+                    <result column="years" property="years"/>
+                    <result column="developer" property="developer"/>
+                    <result column="handDate" property="handDate"/>
+                    <result column="saleStatus" property="saleStatus"/>
+                    <result column="openDate" property="openDate"/>
+                    <result column="saleAddr" property="saleAddr"/>
+                    <result column="saleAddrLng" property="saleAddrLng"/>
+                    <result column="saleAddrLat" property="saleAddrLat"/>
+                    <result column="areaCovered" property="areaCovered"/>
+                    <result column="buildArea" property="buildArea"/>
+                    <result column="plotRatio" property="plotRatio"/>
+                    <result column="greenRate" property="greenRate"/>
+                    <result column="ParkNum" property="ParkNum"/>
+                    <result column="floorNum" property="floorNum"/>
+                    <result column="houseNum" property="houseNum"/>
+                    <result column="propertyCorp" property="propertyCorp"/>
+                    <result column="propertyPrice" property="propertyPrice"/>
+                    <result column="storeyCon" property="storeyCon"/>
+                    <result column="projectIntro" property="projectIntro"/>
+                    <result column="projectSpot" property="projectSpot"/>
+                    <result column="STATUS" property="status"/>
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+            id AS "id", areaId AS "areaId", NAME AS "name", recordName AS "recordName", price AS "price", Tel AS "Tel", address AS "address", addrLng AS "addrLng", addrLat AS "addrLat", propertyType AS "propertyType", projectAdv AS "projectAdv", buildType AS "buildType", renovation AS "renovation", years AS "years", developer AS "developer", handDate AS "handDate", saleStatus AS "saleStatus", openDate AS "openDate", saleAddr AS "saleAddr", saleAddrLng AS "saleAddrLng", saleAddrLat AS "saleAddrLat", areaCovered AS "areaCovered", buildArea AS "buildArea", plotRatio AS "plotRatio", greenRate AS "greenRate", ParkNum AS "ParkNum", floorNum AS "floorNum", houseNum AS "houseNum", propertyCorp AS "propertyCorp", propertyPrice AS "propertyPrice", storeyCon AS "storeyCon", projectIntro AS "projectIntro", projectSpot AS "projectSpot", STATUS AS "status"
+        </sql>
+
+
+    <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectinfoResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectinfo where 1 = 1
+    </select>
+
+    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectinfo where 1 = 1
+    </select>
+
+    <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectinfoResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectinfo where 1 = 1
+    </select>
+
+    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectinfo where 1 = 1
+    </select>
+
+</mapper>
