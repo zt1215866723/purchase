@@ -70,7 +70,7 @@ public class HouselayoutController extends BaseController {
      */
     @RequestMapping("/upload")
     public String upload() {
-        return PREFIX + "/houselayoutimg.html";
+        return "/modular/houselayoutimg/houselayoutimg.html";
     }
 
     /**

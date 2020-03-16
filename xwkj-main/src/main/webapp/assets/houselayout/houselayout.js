@@ -151,8 +151,9 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      * @param data 点击按钮时候的行数据
      */
     Houselayout.openUploadDlg = function (data) {
+        console.log(data)
         func.open({
-            title: '修改',
+            title: '上传图片',
             content: Feng.ctxPath + '/houselayout/upload?id=' + data.id,
             tableId: Houselayout.tableId
         });

@@ -41,10 +41,11 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
     /**
      * 弹出添加对话框
      */
-    Houselayoutimg.openAddDlg = function () {
+    Houselayoutimg.openAddDlg = function (data) {
+        console.log(data)
         func.open({
             title: '添加',
-            content: Feng.ctxPath + '/houselayoutimg/add',
+            content: Feng.ctxPath + '/houselayoutimg/add?id=' + data.id,
             tableId: Houselayoutimg.tableId
         });
     };

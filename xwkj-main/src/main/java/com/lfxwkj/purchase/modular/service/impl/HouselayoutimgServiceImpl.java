@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.service.impl;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -28,17 +29,20 @@ import java.util.List;
         public class HouselayoutimgServiceImpl extends ServiceImpl<HouselayoutimgMapper, Houselayoutimg>implements HouselayoutimgService {
 
         @Override
+        @DataSource(name = "purchase")
         public void add(HouselayoutimgParam param){
     Houselayoutimg entity=getEntity(param);
         this.save(entity);
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void delete(HouselayoutimgParam param){
         this.removeById(getKey(param));
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void update(HouselayoutimgParam param){
     Houselayoutimg oldEntity=getOldEntity(param);
     Houselayoutimg newEntity=getEntity(param);
@@ -47,16 +51,19 @@ import java.util.List;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public HouselayoutimgResult findBySpec(HouselayoutimgParam param){
         return null;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public List<HouselayoutimgResult> findListBySpec(HouselayoutimgParam param){
         return null;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public LayuiPageInfo findPageBySpec(HouselayoutimgParam param){
         Page pageContext=getPageContext();
         IPage page=this.baseMapper.customPageList(pageContext,param);
