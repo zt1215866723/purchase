@@ -21,10 +21,8 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             {field: 'id', hide: true, title: ''},
             {field: 'houseLayID', sort: true, title: ''},
             {field: 'imgUrl', sort: true, title: ''},
-            {field: 'isMain', sort: true, title: '主图显示在户型列表,默认为0 勾选为1 则主图
-            '},
-            {field: 'orderNum', sort: true, title: '某户型中轮播显示户型图的顺序，默认为0，数值越大排前
-            '},
+            {field: 'isMain', sort: true, title: '主图显示在户型列表,默认为0 勾选为1 则主图'},
+            {field: 'orderNum', sort: true, title: '某户型中轮播显示户型图的顺序，默认为0，数值越大排前'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };

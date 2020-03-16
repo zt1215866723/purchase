@@ -57,4 +57,8 @@ public class HouselayoutResult implements Serializable {
              */
         private Integer orderNum;
 
+            /**
+            * 1是主力户型，2不是主力户型
+            */
+        private Integer isMain;
 }

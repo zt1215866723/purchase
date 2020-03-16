@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.controller;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Projectdynamic;
 import com.lfxwkj.purchase.modular.model.params.ProjectdynamicParam;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/projectdynamic")
 public class ProjectdynamicController extends BaseController {
 
-    private String PREFIX = "/assets/projectdynamic";
+    private String PREFIX = "/modular/projectdynamic";
 
     @Autowired
     private ProjectdynamicService projectdynamicService;
@@ -106,6 +107,7 @@ public class ProjectdynamicController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/detail")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData detail(ProjectdynamicParam projectdynamicParam) {
         Projectdynamic detail = this.projectdynamicService.getById(projectdynamicParam.getId());

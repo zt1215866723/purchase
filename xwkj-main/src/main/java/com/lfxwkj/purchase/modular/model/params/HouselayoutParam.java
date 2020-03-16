@@ -58,6 +58,12 @@ public class HouselayoutParam implements Serializable, BaseValidatingParam {
              */
         private Integer orderNum;
 
+        /**
+         * 1是主力户型，2不是主力户型
+         */
+
+        private Integer isMain;
+
     @Override
     public String checkParam() {
         return null;

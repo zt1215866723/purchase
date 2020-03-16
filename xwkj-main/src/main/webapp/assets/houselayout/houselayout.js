@@ -20,14 +20,22 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             {type: 'checkbox'},
             {field: 'id', hide: true, title: ''},
             {field: 'projectID', sort: true, title: ''},
-            {field: 'layoutName', sort: true, title: '如：
-            A2户型'},
+            {field: 'layoutName', sort: true, title: '如：A2户型'},
             {field: 'room', sort: true, title: '如：二室二厅一卫'},
             {field: 'storeyPrice', sort: true, title: '如：约75万元/套'},
             {field: 'buildArea', sort: true, title: '如：105'},
             {field: 'saleStatus', sort: true, title: '该户型销售状态：在售、待售等'},
             {field: 'content', sort: true, title: ''},
             {field: 'orderNum', sort: true, title: '默认值0，数值越大排前'},
+            {field: 'main', sort: true, title: '主力户型',templet:function (d) {
+                    var main = "";
+                    if (d.isMain == "1") {
+                        main = "<font color='red'>主力户型</font>";
+                    } else if(d.isMain == "2"){
+                        main = "<font >非主力户型</font>";
+                    }
+                    return main;
+                }},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };
@@ -37,7 +45,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      */
     Houselayout.search = function () {
         var queryData = {};
-        queryData['condition'] = $("#condition").val();
+        queryData['layoutName'] = $("#layoutName").val();
         table.reload(Houselayout.tableId, {
             where: queryData, page: {curr: 1}
         });
@@ -132,6 +140,22 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             Houselayout.openEditDlg(data);
         } else if (layEvent === 'delete') {
             Houselayout.onDeleteItem(data);
+        }else if (layEvent === 'upload') {
+            Houselayout.openUploadDlg(data);
         }
     });
+
+    /**
+     * 点击上传图片
+     *
+     * @param data 点击按钮时候的行数据
+     */
+    Houselayout.openUploadDlg = function (data) {
+        func.open({
+            title: '修改',
+            content: Feng.ctxPath + '/houselayout/upload?id=' + data.id,
+            tableId: Houselayout.tableId
+        });
+    };
+
 });

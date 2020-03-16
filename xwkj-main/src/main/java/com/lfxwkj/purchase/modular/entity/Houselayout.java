@@ -65,6 +65,11 @@ public class Houselayout implements Serializable {
     @TableField("orderNum")
     private Integer orderNum;
 
+    /**
+     * 默认值0，数值越大排前
+     */
+    @TableField("isMain")
+    private Integer isMain;
 
     public Long getId() {
         return id;
@@ -138,6 +143,10 @@ public class Houselayout implements Serializable {
         this.orderNum = orderNum;
     }
 
+    public Integer getIsMain() { return isMain; }
+
+    public void setIsMain(Integer isMain) { this.isMain = isMain; }
+
     @Override
     public String toString() {
         return "Houselayout{" +
@@ -150,6 +159,7 @@ public class Houselayout implements Serializable {
         ", saleStatus=" + saleStatus +
         ", content=" + content +
         ", orderNum=" + orderNum +
+        ", isMain=" + isMain +
         "}";
     }
 }

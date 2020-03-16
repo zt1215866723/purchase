@@ -20,8 +20,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             {type: 'checkbox'},
             {field: 'id', hide: true, title: ''},
             {field: 'projectId', sort: true, title: ''},
-            {field: 'dynamicType', sort: true, title: '预售证、开盘、交房等
-            '},
+            {field: 'dynamicType', sort: true, title: '预售证、开盘、交房等'},
             {field: 'title', sort: true, title: ''},
             {field: 'dynamicDate', sort: true, title: ''},
             {field: 'content', sort: true, title: ''},
@@ -34,7 +33,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      */
     Projectdynamic.search = function () {
         var queryData = {};
-        queryData['condition'] = $("#condition").val();
+        queryData['title'] = $("#title").val();
         table.reload(Projectdynamic.tableId, {
             where: queryData, page: {curr: 1}
         });
