@@ -1,14 +1,11 @@
 package com.lfxwkj.purchase.modular.utils;
 
 
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import sun.misc.BASE64Decoder;
-
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.spec.SecretKeySpec;
-import java.util.Map;
 
 
 public class AesUtil {
@@ -18,18 +15,7 @@ public class AesUtil {
     private static final String KEY = "abcdefggfedcba12";
     //算法
     private static final String ALGORITHMSTR = "AES/ECB/PKCS5Padding";
-    
-    public static Map<String, Object> getRequestMap(String msg) throws Exception{
-		String info = aesDecrypt(msg);
-		SignData signData = JsonUtils.toJavaObject(info, SignData.class);
-		String data = signData.getData();
-		String sign = signData.getSign();
 
-		Map<String, Object> requestMap = JsonUtils.toObjectMap(data);
-		if(!sign.equals(DigestUtils.md5Hex(data).toUpperCase()))
-			requestMap = null;
-		return requestMap;
-	}
     
     /** 
      * aes解密 

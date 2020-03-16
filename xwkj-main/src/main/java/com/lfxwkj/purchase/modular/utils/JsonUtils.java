@@ -1,8 +1,8 @@
 package com.lfxwkj.purchase.modular.utils;
 
-import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 
-import java.util.Map;
+import java.lang.reflect.Type;
 
 /**
  * json工具类
@@ -10,47 +10,28 @@ import java.util.Map;
  *
  */
 public class JsonUtils {
-	
+
+	private static Gson gson = new Gson();
+
+	public static <T>T getData(String json, Type typeOfT){
+		return gson.fromJson(json, typeOfT);
+	}
 	/**
-	 * 将json字符串转换成对象
-	 * @param jsonString
-	 * @param clazz
+	 * JOSN数据转换成java对象
+	 * @param json
 	 * @return
 	 */
-	public static <T>T toJavaObject(String jsonString, Class<T> clazz){
-		return  JSON.toJavaObject(JSON.parseObject(jsonString) , clazz);
+	public static <T>T getData(String json, Class<T> classz){
+		return (T) gson.fromJson(json, classz);
 	}
-	
+
 	/**
-	 * 将对象转换成json字符串
-	 * @param obj
+	 * 对象转换成JSON数据
+	 * @param object
 	 * @return
 	 */
-	public static String toJsonString(Object obj) {
-		return JSON.toJSONString(obj);
+	public static String toJSON(Object object){
+		return gson.toJson(object);
 	}
-	
-	/**
-	 * <pre>
-	 * 将json字符串转换成Map&lt;String, Object&gt;集合
-	 * <pre>
-	 * @param jsonString
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public static Map<String, Object> toObjectMap(String jsonString){
-		return toJavaObject(jsonString, Map.class);
-	}
-	
-	/**
-	 * <pre>
-	 * 将json字符串转换成Map&lt;String, String&gt;集合
-	 * <pre>
-	 * @param jsonString
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public static Map<String, String> toStringMap(String jsonString){
-		return toJavaObject(jsonString, Map.class);
-	}
+
 }

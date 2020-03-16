@@ -45,6 +45,20 @@
             id AS "id", areaId AS "areaId", NAME AS "name", recordName AS "recordName", price AS "price", Tel AS "Tel", address AS "address", addrLng AS "addrLng", addrLat AS "addrLat", propertyType AS "propertyType", projectAdv AS "projectAdv", buildType AS "buildType", renovation AS "renovation", years AS "years", developer AS "developer", handDate AS "handDate", saleStatus AS "saleStatus", openDate AS "openDate", saleAddr AS "saleAddr", saleAddrLng AS "saleAddrLng", saleAddrLat AS "saleAddrLat", areaCovered AS "areaCovered", buildArea AS "buildArea", plotRatio AS "plotRatio", greenRate AS "greenRate", ParkNum AS "ParkNum", floorNum AS "floorNum", houseNum AS "houseNum", propertyCorp AS "propertyCorp", propertyPrice AS "propertyPrice", storeyCon AS "storeyCon", projectIntro AS "projectIntro", projectSpot AS "projectSpot", STATUS AS "status"
         </sql>
 
+    <select id="pojectdetail" resultType="com.lfxwkj.purchase.modular.model.result.ProjectinfoResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectinfo where 1 = 1
+    </select>
+
+    <select id="projectlist" resultType="com.lfxwkj.purchase.modular.model.result.ProjectinfoResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
+        select
+        <include refid="Base_Column_List"/>
+        from projectinfo where 1 = 1
+    </select>
+
 
     <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectinfoResult"
             parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">

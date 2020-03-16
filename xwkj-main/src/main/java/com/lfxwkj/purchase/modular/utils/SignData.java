@@ -1,23 +1,33 @@
 package com.lfxwkj.purchase.modular.utils;
 
+
 public class SignData {
-	private String sign;
-	private String data;
+    private String sign;
+    private String data;
+    private String token;
 
-	public String getSign() {
-		return sign;
-	}
+    public String getToken() {
+        return token;
+    }
 
-	public void setSign(String sign) {
-		this.sign = sign;
-	}
+    public void setToken(String token) {
+        this.token = token;
+    }
 
-	public String getData() {
-		return data;
-	}
+    public String getSign() {
+        return sign;
+    }
 
-	public void setData(String data) {
-		this.data = data;
-	}
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
 
 }

@@ -11,6 +11,7 @@ import com.lfxwkj.purchase.modular.mapper.ProjectinfoMapper;
 import com.lfxwkj.purchase.modular.model.params.ProjectinfoParam;
 import com.lfxwkj.purchase.modular.model.result.ProjectinfoResult;
 import com.lfxwkj.purchase.modular.service.ProjectinfoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -18,67 +19,80 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author 郭晓东
  * @since 2020-03-13
  */
 @Service
-        public class ProjectinfoServiceImpl extends ServiceImpl<ProjectinfoMapper, Projectinfo>implements ProjectinfoService {
+public class ProjectinfoServiceImpl extends ServiceImpl<ProjectinfoMapper, Projectinfo> implements ProjectinfoService {
 
-        @Override
-        public void add(ProjectinfoParam param){
-    Projectinfo entity=getEntity(param);
+    /**
+     * 手机端项目的详情
+     *
+     */
+    public ProjectinfoResult pojectdetail(String id){
+        return this.baseMapper.pojectdetail(id);
+    }
+
+    @Override
+    public List<ProjectinfoResult> projectlist(ProjectinfoParam param) {
+        return  this.baseMapper.projectlist(param);
+    }
+
+    @Override
+    public void add(ProjectinfoParam param) {
+        Projectinfo entity = getEntity(param);
         this.save(entity);
-        }
+    }
 
-        @Override
-        public void delete(ProjectinfoParam param){
+    @Override
+    public void delete(ProjectinfoParam param) {
         this.removeById(getKey(param));
-        }
+    }
 
-        @Override
-        public void update(ProjectinfoParam param){
-    Projectinfo oldEntity=getOldEntity(param);
-    Projectinfo newEntity=getEntity(param);
-        ToolUtil.copyProperties(newEntity,oldEntity);
+    @Override
+    public void update(ProjectinfoParam param) {
+        Projectinfo oldEntity = getOldEntity(param);
+        Projectinfo newEntity = getEntity(param);
+        ToolUtil.copyProperties(newEntity, oldEntity);
         this.updateById(newEntity);
-        }
+    }
 
-        @Override
-        public ProjectinfoResult findBySpec(ProjectinfoParam param){
+    @Override
+    public ProjectinfoResult findBySpec(ProjectinfoParam param) {
         return null;
-        }
+    }
 
-        @Override
-        public List<ProjectinfoResult> findListBySpec(ProjectinfoParam param){
+    @Override
+    public List<ProjectinfoResult> findListBySpec(ProjectinfoParam param) {
         return null;
-        }
+    }
 
-        @Override
-        public LayuiPageInfo findPageBySpec(ProjectinfoParam param){
-        Page pageContext=getPageContext();
-        IPage page=this.baseMapper.customPageList(pageContext,param);
+    @Override
+    public LayuiPageInfo findPageBySpec(ProjectinfoParam param) {
+        Page pageContext = getPageContext();
+        IPage page = this.baseMapper.customPageList(pageContext, param);
         return LayuiPageFactory.createPageInfo(page);
-        }
+    }
 
-        private Serializable getKey(ProjectinfoParam param){
-                return param.getId();
-        }
+    private Serializable getKey(ProjectinfoParam param) {
+        return param.getId();
+    }
 
-        private Page getPageContext(){
+    private Page getPageContext() {
         return LayuiPageFactory.defaultPage();
-        }
+    }
 
-        private Projectinfo getOldEntity(ProjectinfoParam param){
+    private Projectinfo getOldEntity(ProjectinfoParam param) {
         return this.getById(getKey(param));
-        }
+    }
 
-        private Projectinfo getEntity(ProjectinfoParam param){
-    Projectinfo entity=new Projectinfo();
-        ToolUtil.copyProperties(param,entity);
+    private Projectinfo getEntity(ProjectinfoParam param) {
+        Projectinfo entity = new Projectinfo();
+        ToolUtil.copyProperties(param, entity);
         return entity;
-        }
+    }
 
-        }
+}
