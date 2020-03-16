@@ -89,8 +89,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/error").permitAll()
                 .antMatchers("/global/error").permitAll()
 
-                // 测试多数据源的接口，可以去掉
-                .antMatchers("/tran/**").permitAll()
+                // 开放小程序端的接口
+                .antMatchers("/api/**").permitAll()
 
                 //获取租户列表的接口
                 .antMatchers("/tenantInfo/listTenants").permitAll()
