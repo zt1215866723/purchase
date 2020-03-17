@@ -60,11 +60,11 @@ public interface HouselayoutMapper extends BaseMapper<Houselayout> {
          * 手机端主力户型接口， 户型列表的方法
          * 张童
          */
-        List<HouselayoutVo> houselayoutList(HouselayoutParam paramCondition);
+        List<HouselayoutVo> houselayoutList(@Param("paramCondition")HouselayoutParam paramCondition);
 
         /**
          * 手机端户型详情方法
          * 张童
          */
-        HouselayoutVo houselayoutDetails(HouselayoutParam paramCondition);
+        HouselayoutVo houselayoutDetails(@Param("paramCondition")HouselayoutParam paramCondition);
         }

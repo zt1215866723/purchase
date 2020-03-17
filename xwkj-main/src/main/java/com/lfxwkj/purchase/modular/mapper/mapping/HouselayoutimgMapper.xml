@@ -48,7 +48,7 @@
         select
         <include refid="Base_Column_List"/>
         from houselayoutimg where 1 = 1
-        WHERE houseLayID = #{houseId}
+        AND houseLayID = #{houseId}
     </select>
 
 </mapper>

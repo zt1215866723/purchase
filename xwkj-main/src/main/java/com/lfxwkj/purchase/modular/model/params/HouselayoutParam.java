@@ -66,6 +66,109 @@ public class HouselayoutParam implements Serializable, BaseValidatingParam {
 
         private Integer isMain;
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public HouselayoutParam setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Long getHouseType() {
+        return houseType;
+    }
+
+    public HouselayoutParam setHouseType(Long houseType) {
+        this.houseType = houseType;
+        return this;
+    }
+
+    public Long getProjectID() {
+        return projectID;
+    }
+
+    public HouselayoutParam setProjectID(Long projectID) {
+        this.projectID = projectID;
+        return this;
+    }
+
+    public String getLayoutName() {
+        return layoutName;
+    }
+
+    public HouselayoutParam setLayoutName(String layoutName) {
+        this.layoutName = layoutName;
+        return this;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public HouselayoutParam setRoom(String room) {
+        this.room = room;
+        return this;
+    }
+
+    public String getStoreyPrice() {
+        return storeyPrice;
+    }
+
+    public HouselayoutParam setStoreyPrice(String storeyPrice) {
+        this.storeyPrice = storeyPrice;
+        return this;
+    }
+
+    public String getBuildArea() {
+        return buildArea;
+    }
+
+    public HouselayoutParam setBuildArea(String buildArea) {
+        this.buildArea = buildArea;
+        return this;
+    }
+
+    public Long getSaleStatus() {
+        return saleStatus;
+    }
+
+    public HouselayoutParam setSaleStatus(Long saleStatus) {
+        this.saleStatus = saleStatus;
+        return this;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public HouselayoutParam setContent(String content) {
+        this.content = content;
+        return this;
+    }
+
+    public Integer getOrderNum() {
+        return orderNum;
+    }
+
+    public HouselayoutParam setOrderNum(Integer orderNum) {
+        this.orderNum = orderNum;
+        return this;
+    }
+
+    public Integer getIsMain() {
+        return isMain;
+    }
+
+    public HouselayoutParam setIsMain(Integer isMain) {
+        this.isMain = isMain;
+        return this;
+    }
+
     @Override
     public String checkParam() {
         return null;

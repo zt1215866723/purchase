@@ -45,8 +45,8 @@ public class InfolistApiController {
      *
      * @author 张童
      */
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public void projectlist(HttpServletResponse response, String data) {
+    @RequestMapping(value = "/noticelist", method = RequestMethod.GET)
+    public void noticelist(HttpServletResponse response, String data) {
         ResponseApi responseApi = new ResponseApi();
         // 解密,验证token是否失效，验证签名是否正确，拿到请求的数据。
         Map<String, String> map = SignDataTranstor.getData(data);

@@ -38,7 +38,7 @@ public class HouselayoutApiController {
      *
      * @author 张童
      */
-    @RequestMapping(value = "houseLayoutlist", method = RequestMethod.GET)
+    @RequestMapping(value = "/houseLayoutlist", method = RequestMethod.GET)
     public void houseLayoutlist(HttpServletResponse response, String data) {
         ResponseApi responseApi = new ResponseApi();
         // 解密,验证token是否失效，验证签名是否正确，拿到请求的数据。
@@ -62,13 +62,15 @@ public class HouselayoutApiController {
      *
      * @author 张童
      */
-    @RequestMapping(value = "houseLayoutdetail", method = RequestMethod.GET)
+    @RequestMapping(value = "/houseLayoutdetail", method = RequestMethod.GET)
     public void houseLayoutdetail(HttpServletResponse response, String data) {
         ResponseApi responseApi = new ResponseApi();
         // 解密,验证token是否失效，验证签名是否正确，拿到请求的数据。
         Map<String, String> map = SignDataTranstor.getData(data);
         // 将请求的参数转换为对象
         HouselayoutParam param = JsonUtils.getData(JsonUtils.toJSON(map), HouselayoutParam.class);
+//        HouselayoutParam param = new HouselayoutParam();
+//        param.setId(houseLayID);
         try {
             log.info("获取户型详情的方法");
             HouselayoutVo houselayoutVo = houselayoutService.houselayoutDetails(param);

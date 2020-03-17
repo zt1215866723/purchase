@@ -78,11 +78,13 @@ import java.util.List;
         }
 
     @Override
+    @DataSource(name = "purchase")
     public List<HouselayoutVo> houselayoutList(HouselayoutParam param) {
         return  this.baseMapper.houselayoutList(param);
     }
 
     @Override
+    @DataSource(name = "purchase")
     public HouselayoutVo houselayoutDetails(HouselayoutParam param) {
         HouselayoutVo houselayoutVos = this.baseMapper.houselayoutDetails(param);
         List<HouselayoutimgResult> imgUrl = houselayoutimgMapper.getImgUrl(param.getId());

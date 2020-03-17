@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.service.impl;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -65,6 +66,7 @@ import java.util.List;
         }
 
     @Override
+    @DataSource(name = "purchase")
     public List<InfolistResult> noticeInfoList(InfolistParam param) {
         return  this.baseMapper.noticeInfoList(param);
     }
