@@ -21,6 +21,7 @@ public class ResponseApi {
 		this.success = Boolean.TRUE;
 		this.code = ResultCode.SUCCEE;
 		this.message = "请求成功";
+		this.data = data;
 	}
 
 	

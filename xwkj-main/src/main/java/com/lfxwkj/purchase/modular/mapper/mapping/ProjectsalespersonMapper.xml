@@ -42,4 +42,15 @@
         from projectsalesperson where 1 = 1
     </select>
 
+    <select id="projectSalespersonList" resultType="com.lfxwkj.purchase.modular.model.vo.ProjectsalepersonListVo">
+        select k.`name`,k.`picUrl`,k.`tel`
+        from projectsalesperson t
+        left join `salesperson` k on k.`id` = t.`salespersonID`
+        where t.`projectID` = #{projectID}
+        order by k.`goodNum` desc
+        <if test="nums != null">
+            limit #{nums}
+        </if>
+    </select>
+
 </mapper>

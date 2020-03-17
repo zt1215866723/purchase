@@ -3,14 +3,21 @@ package com.lfxwkj.purchase.modular.service.impl;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageFactory;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Salesperson;
+import com.lfxwkj.purchase.modular.mapper.ProjectinfoMapper;
+import com.lfxwkj.purchase.modular.mapper.SalefollowMapper;
 import com.lfxwkj.purchase.modular.mapper.SalespersonMapper;
 import com.lfxwkj.purchase.modular.model.params.SalespersonParam;
+import com.lfxwkj.purchase.modular.model.result.ProjectinfoResult;
 import com.lfxwkj.purchase.modular.model.result.SalespersonResult;
-import  com.lfxwkj.purchase.modular.service.SalespersonService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.lfxwkj.purchase.modular.model.vo.SaleFollowVo;
+import com.lfxwkj.purchase.modular.model.vo.SalespersonVo;
+import com.lfxwkj.purchase.modular.service.SalespersonService;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -27,6 +34,10 @@ import java.util.List;
 @Service
         public class SalespersonServiceImpl extends ServiceImpl<SalespersonMapper, Salesperson>implements SalespersonService {
 
+    @Autowired(required = false)
+    private ProjectinfoMapper projectinfoMapper;
+    @Autowired(required = false)
+    private SalefollowMapper salefollowMapper;
         @Override
         public void add(SalespersonParam param){
     Salesperson entity=getEntity(param);
@@ -64,7 +75,21 @@ import java.util.List;
         return LayuiPageFactory.createPageInfo(page);
         }
 
-        private Serializable getKey(SalespersonParam param){
+    @Override
+    public SalespersonVo salespersonDetail(Long id) {
+        Salesperson salesperson = this.baseMapper.selectById(id);
+        SalespersonVo salespersonVo = new SalespersonVo();
+        BeanUtils.copyProperties(salesperson,salespersonVo);
+        //查询销售顾问所属项目列表
+        List<ProjectinfoResult> projectinfoResultList = projectinfoMapper.projectlistBysalesID(id);
+        salespersonVo.setProjectInfo(projectinfoResultList);
+        //查询销售顾问记录
+        List<SaleFollowVo> saleFollowVos = salefollowMapper.saleFollowBysalesID(id);
+        salespersonVo.setServiceTrajectory(saleFollowVos);
+        return salespersonVo;
+    }
+
+    private Serializable getKey(SalespersonParam param){
                 return param.getId();
         }
 

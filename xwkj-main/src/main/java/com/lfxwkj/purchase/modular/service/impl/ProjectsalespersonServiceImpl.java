@@ -9,6 +9,7 @@ import com.lfxwkj.purchase.modular.entity.Projectsalesperson;
 import com.lfxwkj.purchase.modular.mapper.ProjectsalespersonMapper;
 import com.lfxwkj.purchase.modular.model.params.ProjectsalespersonParam;
 import com.lfxwkj.purchase.modular.model.result.ProjectsalespersonResult;
+import com.lfxwkj.purchase.modular.model.vo.ProjectsalepersonListVo;
 import  com.lfxwkj.purchase.modular.service.ProjectsalespersonService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -63,7 +64,18 @@ import java.util.List;
         return LayuiPageFactory.createPageInfo(page);
         }
 
-        private Serializable getKey(ProjectsalespersonParam param){
+    /**
+     * 查询项目顾问列表
+     * @param projectID 项目主键 必填
+     * @param nums 请求条数
+     * @return
+     */
+    @Override
+    public List<ProjectsalepersonListVo> projectSalespersonList(Long projectID, Long nums) {
+        return this.baseMapper.projectSalespersonList(projectID,nums);
+    }
+
+    private Serializable getKey(ProjectsalespersonParam param){
                 return param.getId();
         }
 

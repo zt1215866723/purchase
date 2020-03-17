@@ -1,12 +1,13 @@
 package com.lfxwkj.purchase.modular.entity;
 
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * <p>
@@ -40,7 +41,7 @@ public class Projectinfo implements Serializable {
     private BigDecimal price;
 
     @TableField("Tel")
-    private String Tel;
+    private String tel;
 
     @TableField("address")
     private String address;
@@ -112,7 +113,7 @@ public class Projectinfo implements Serializable {
     private BigDecimal greenRate;
 
     @TableField("ParkNum")
-    private String ParkNum;
+    private String parkNum;
 
     @TableField("floorNum")
     private Integer floorNum;
@@ -183,11 +184,11 @@ public class Projectinfo implements Serializable {
     }
 
     public String getTel() {
-        return Tel;
+        return tel;
     }
 
     public void setTel(String Tel) {
-        this.Tel = Tel;
+        this.tel = Tel;
     }
 
     public String getAddress() {
@@ -343,11 +344,11 @@ public class Projectinfo implements Serializable {
     }
 
     public String getParkNum() {
-        return ParkNum;
+        return parkNum;
     }
 
     public void setParkNum(String ParkNum) {
-        this.ParkNum = ParkNum;
+        this.parkNum = ParkNum;
     }
 
     public Integer getFloorNum() {
@@ -422,7 +423,7 @@ public class Projectinfo implements Serializable {
         ", name=" + name +
         ", recordName=" + recordName +
         ", price=" + price +
-        ", Tel=" + Tel +
+        ", Tel=" + tel +
         ", address=" + address +
         ", addrLng=" + addrLng +
         ", addrLat=" + addrLat +
@@ -442,7 +443,7 @@ public class Projectinfo implements Serializable {
         ", buildArea=" + buildArea +
         ", plotRatio=" + plotRatio +
         ", greenRate=" + greenRate +
-        ", ParkNum=" + ParkNum +
+        ", ParkNum=" + parkNum +
         ", floorNum=" + floorNum +
         ", houseNum=" + houseNum +
         ", propertyCorp=" + propertyCorp +

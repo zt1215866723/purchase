@@ -66,4 +66,10 @@ public interface ProjectdynamicService extends IService<Projectdynamic> {
          */
         LayuiPageInfo findPageBySpec(ProjectdynamicParam param);
 
-        }
+    /**
+     * 查询项目动态
+     * @param param 项目主键
+     * @return
+     */
+    List<ProjectdynamicResult> projectDynamicList(ProjectdynamicParam param);
+}

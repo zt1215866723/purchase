@@ -5,6 +5,7 @@ import com.lfxwkj.purchase.modular.entity.Projectsalesperson;
 import com.lfxwkj.purchase.modular.model.params.ProjectsalespersonParam;
 import com.lfxwkj.purchase.modular.model.result.ProjectsalespersonResult;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lfxwkj.purchase.modular.model.vo.ProjectsalepersonListVo;
 
 import java.util.List;
 
@@ -66,4 +67,11 @@ public interface ProjectsalespersonService extends IService<Projectsalesperson> 
          */
         LayuiPageInfo findPageBySpec(ProjectsalespersonParam param);
 
-        }
+    /**
+     * 查询项目顾问列表
+     * @param projectID 项目主键 必填
+     * @param nums 请求条数
+     * @return
+     */
+    List<ProjectsalepersonListVo> projectSalespersonList(Long projectID, Long nums);
+}
