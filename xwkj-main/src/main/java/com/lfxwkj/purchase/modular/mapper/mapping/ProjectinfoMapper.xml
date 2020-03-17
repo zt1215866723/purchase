@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lfxwkj.purchase.mapper.ProjectinfoMapper">
+<mapper namespace="com.lfxwkj.purchase.modular.mapper.ProjectinfoMapper">
 
         <!-- 通用查询映射结果 -->
         <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Projectinfo">
@@ -9,7 +9,7 @@
                     <result column="NAME" property="name"/>
                     <result column="recordName" property="recordName"/>
                     <result column="price" property="price"/>
-                    <result column="Tel" property="Tel"/>
+                    <result column="Tel" property="tel"/>
                     <result column="address" property="address"/>
                     <result column="addrLng" property="addrLng"/>
                     <result column="addrLat" property="addrLat"/>
@@ -29,7 +29,7 @@
                     <result column="buildArea" property="buildArea"/>
                     <result column="plotRatio" property="plotRatio"/>
                     <result column="greenRate" property="greenRate"/>
-                    <result column="ParkNum" property="ParkNum"/>
+                    <result column="ParkNum" property="parkNum"/>
                     <result column="floorNum" property="floorNum"/>
                     <result column="houseNum" property="houseNum"/>
                     <result column="propertyCorp" property="propertyCorp"/>
@@ -84,6 +84,13 @@
         select
         <include refid="Base_Column_List"/>
         from projectinfo where 1 = 1
+    </select>
+
+    <select id="projectlistBysalesID" resultType="com.lfxwkj.purchase.modular.model.result.ProjectinfoResult">
+        select <include refid="Base_Column_List"/>
+        from projectinfo t
+        left join projectsalesperson k on k.`projectID` = t.`id`
+        where k.`salespersonID` = {value}
     </select>
 
 </mapper>

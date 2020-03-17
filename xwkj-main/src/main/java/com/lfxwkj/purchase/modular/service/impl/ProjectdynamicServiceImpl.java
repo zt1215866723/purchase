@@ -70,7 +70,17 @@ import java.util.List;
         return LayuiPageFactory.createPageInfo(page);
         }
 
-        private Serializable getKey(ProjectdynamicParam param){
+    /**
+     *查询项目动态
+     * @param param 项目主键
+     * @return
+     */
+    @Override
+    public List<ProjectdynamicResult> projectDynamicList(ProjectdynamicParam param) {
+        return this.baseMapper.projectDynamicList(param);
+    }
+
+    private Serializable getKey(ProjectdynamicParam param){
                 return param.getId();
         }
 

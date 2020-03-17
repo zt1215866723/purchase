@@ -1,11 +1,10 @@
 package com.lfxwkj.purchase.modular.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lfxwkj.purchase.modular.entity.Projectdynamic;
 import com.lfxwkj.purchase.modular.model.params.ProjectdynamicParam;
 import com.lfxwkj.purchase.modular.model.result.ProjectdynamicResult;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -53,4 +52,10 @@ public interface ProjectdynamicMapper extends BaseMapper<Projectdynamic> {
          */
         Page<Map<String, Object>>customPageMapList(@Param("page") Page page, @Param("paramCondition") ProjectdynamicParam paramCondition);
 
-        }
+        /**
+         * 查询项目动态
+         * @param param 项目主键 必填
+         * @return
+         */
+    List<ProjectdynamicResult> projectDynamicList(@Param("param") ProjectdynamicParam param);
+}
