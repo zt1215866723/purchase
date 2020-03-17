@@ -1,65 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lfxwkj.purchase.mapper.ProjectinfoMapper">
+<mapper namespace="com.lfxwkj.purchase.modular.mapper.ProjectinfoMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Projectinfo">
+        <id column="id" property="id"/>
+        <result column="areaId" property="areaId"/>
+        <result column="NAME" property="name"/>
+        <result column="recordName" property="recordName"/>
+        <result column="price" property="price"/>
+        <result column="Tel" property="Tel"/>
+        <result column="address" property="address"/>
+        <result column="addrLng" property="addrLng"/>
+        <result column="addrLat" property="addrLat"/>
+        <result column="propertyType" property="propertyType"/>
+        <result column="projectAdv" property="projectAdv"/>
+        <result column="buildType" property="buildType"/>
+        <result column="renovation" property="renovation"/>
+        <result column="years" property="years"/>
+        <result column="developer" property="developer"/>
+        <result column="handDate" property="handDate"/>
+        <result column="saleStatus" property="saleStatus"/>
+        <result column="openDate" property="openDate"/>
+        <result column="saleAddr" property="saleAddr"/>
+        <result column="saleAddrLng" property="saleAddrLng"/>
+        <result column="saleAddrLat" property="saleAddrLat"/>
+        <result column="areaCovered" property="areaCovered"/>
+        <result column="buildArea" property="buildArea"/>
+        <result column="plotRatio" property="plotRatio"/>
+        <result column="greenRate" property="greenRate"/>
+        <result column="ParkNum" property="ParkNum"/>
+        <result column="floorNum" property="floorNum"/>
+        <result column="houseNum" property="houseNum"/>
+        <result column="propertyCorp" property="propertyCorp"/>
+        <result column="propertyPrice" property="propertyPrice"/>
+        <result column="storeyCon" property="storeyCon"/>
+        <result column="projectIntro" property="projectIntro"/>
+        <result column="projectSpot" property="projectSpot"/>
+        <result column="STATUS" property="status"/>
+    </resultMap>
 
-        <!-- 通用查询映射结果 -->
-        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Projectinfo">
-                    <id column="id" property="id"/>
-                    <result column="areaId" property="areaId"/>
-                    <result column="NAME" property="name"/>
-                    <result column="recordName" property="recordName"/>
-                    <result column="price" property="price"/>
-                    <result column="Tel" property="Tel"/>
-                    <result column="address" property="address"/>
-                    <result column="addrLng" property="addrLng"/>
-                    <result column="addrLat" property="addrLat"/>
-                    <result column="propertyType" property="propertyType"/>
-                    <result column="projectAdv" property="projectAdv"/>
-                    <result column="buildType" property="buildType"/>
-                    <result column="renovation" property="renovation"/>
-                    <result column="years" property="years"/>
-                    <result column="developer" property="developer"/>
-                    <result column="handDate" property="handDate"/>
-                    <result column="saleStatus" property="saleStatus"/>
-                    <result column="openDate" property="openDate"/>
-                    <result column="saleAddr" property="saleAddr"/>
-                    <result column="saleAddrLng" property="saleAddrLng"/>
-                    <result column="saleAddrLat" property="saleAddrLat"/>
-                    <result column="areaCovered" property="areaCovered"/>
-                    <result column="buildArea" property="buildArea"/>
-                    <result column="plotRatio" property="plotRatio"/>
-                    <result column="greenRate" property="greenRate"/>
-                    <result column="ParkNum" property="ParkNum"/>
-                    <result column="floorNum" property="floorNum"/>
-                    <result column="houseNum" property="houseNum"/>
-                    <result column="propertyCorp" property="propertyCorp"/>
-                    <result column="propertyPrice" property="propertyPrice"/>
-                    <result column="storeyCon" property="storeyCon"/>
-                    <result column="projectIntro" property="projectIntro"/>
-                    <result column="projectSpot" property="projectSpot"/>
-                    <result column="STATUS" property="status"/>
-        </resultMap>
-
-        <!-- 通用查询结果列 -->
-        <sql id="Base_Column_List">
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
             id AS "id", areaId AS "areaId", NAME AS "name", recordName AS "recordName", price AS "price", Tel AS "Tel", address AS "address", addrLng AS "addrLng", addrLat AS "addrLat", propertyType AS "propertyType", projectAdv AS "projectAdv", buildType AS "buildType", renovation AS "renovation", years AS "years", developer AS "developer", handDate AS "handDate", saleStatus AS "saleStatus", openDate AS "openDate", saleAddr AS "saleAddr", saleAddrLng AS "saleAddrLng", saleAddrLat AS "saleAddrLat", areaCovered AS "areaCovered", buildArea AS "buildArea", plotRatio AS "plotRatio", greenRate AS "greenRate", ParkNum AS "ParkNum", floorNum AS "floorNum", houseNum AS "houseNum", propertyCorp AS "propertyCorp", propertyPrice AS "propertyPrice", storeyCon AS "storeyCon", projectIntro AS "projectIntro", projectSpot AS "projectSpot", STATUS AS "status"
-        </sql>
+    </sql>
 
-    <select id="pojectdetail" resultType="com.lfxwkj.purchase.modular.model.result.ProjectinfoResult"
-            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
-        select
-        <include refid="Base_Column_List"/>
-        from projectinfo where 1 = 1
+    <select id="modetail" resultType="com.lfxwkj.purchase.modular.api.result.Moredetail">
+       select
+        id AS "id",NAME AS "name", recordName AS "recordName",wantBuy as wantBuyNums, propertyType as propertyType,
+        projectAdv as projectAdv, buildType as buildType, renovation as renovation,years as years, developer as developer,
+        address as address, Tel as Tel, handDate as handDate,
+        case
+            when saleStatus = 1 then "在售"
+            when saleStatus = 2 then "待售"
+            when saleStatus = 3 then "在售待售"
+            when saleStatus = 4 then "敬请期待"
+            else saleStatus then "未知"
+        end saleStatus,
+        openDate as openDate, saleAddr as saleAddr, areaCovered as areaCovered,buildArea as buildArea, plotRatio as plotRatio, greenRate as greenRate,
+        ParkNum as ParkNum,floorNum as floorNum, houseNum as houseNum,propertyCorp as propertyCorp, propertyPrice as propertyPrice,
+        storeyCon as storeyCon, projectIntro as projectIntro, projectSpot as projectSpot
+        from projectinfo
+        where 1 = 1
+        AND id = #{id}
+        and STATES = 1
     </select>
 
-    <select id="projectlist" resultType="com.lfxwkj.purchase.modular.model.result.ProjectinfoResult"
+    <select id="pojectdetail" resultType="com.lfxwkj.purchase.modular.api.result.Projectdetail"
             parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
         select
-        <include refid="Base_Column_List"/>
-        from projectinfo where 1 = 1
+        id AS "id",
+        NAME AS "name", price AS "price",
+        address AS "address",
+        saleStatus AS "saleStatus",
+        years AS "years",
+        isHigh AS "isHigh",
+        title AS "title",
+        case
+            when saleStatus = 1 then "在售"
+            when saleStatus = 2 then "待售"
+            when saleStatus = 3 then "在售待售"
+            when saleStatus = 4 then "敬请期待"
+            else saleStatus then "未知"
+        end saleStatus,
+        recordName AS "recordName",
+        Tel AS "Tel", addrLng AS "addrLng", addrLat AS "addrLat",
+        openDate AS "openDate", saleAddr AS "saleAddr",
+        saleAddrLng AS "saleAddrLng", saleAddrLat AS "saleAddrLat",
+        areaCovered AS "areaCovered", buildArea AS "buildArea"
+        from projectinfo
+        where 1 = 1
+        AND id = #{id}
+        and STATES = 1
+    </select>
+
+    <select id="projectlist" resultType="com.lfxwkj.purchase.modular.api.result.Projectlist"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
+        select
+        id AS "id", areaId AS "areaId",
+        NAME AS "name", price AS "price",
+        address AS "address",
+        saleStatus AS "saleStatus",
+        years AS "years",
+        isHigh AS "isHigh",
+        title AS "title",
+        case
+        when saleStatus = 1 then "在售"
+        when saleStatus = 2 then "待售"
+        when saleStatus = 3 then "在售待售"
+        when saleStatus = 4 then "敬请期待"
+        else saleStatus then "未知"
+        end saleStatus
+        from projectinfo
+        where 1 = 1
+        <if test="id != null and id != ''">AND id = #{id}</if>)
+        <if test="name != null and name != ''">and name LIKE CONCAT('%', #{name}, '%')</if>
+        <if test="address != null and address != ''">and address LIKE CONCAT('%', #{address}, '%')</if>
+        <if test="price != null and price != ''">AND price = #{price}</if>)
+        <if test="years != null and years != ''">AND years = #{years}</if>)
+        <if test="saleStatus != null and saleStatus != ''">AND saleStatus = #{saleStatus}</if>)
+        <if test="isHigh != null and isHigh != ''">AND isHigh = #{isHigh}</if>)
+        and STATES = 1
     </select>
 
 
+    <!--一下为自己生成的接口-->
     <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectinfoResult"
             parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
         select
@@ -67,7 +131,8 @@
         from projectinfo where 1 = 1
     </select>
 
-    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
+    <select id="customMapList" resultType="map"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
         select
         <include refid="Base_Column_List"/>
         from projectinfo where 1 = 1
@@ -80,7 +145,8 @@
         from projectinfo where 1 = 1
     </select>
 
-    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
+    <select id="customPageMapList" resultType="map"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectinfoParam">
         select
         <include refid="Base_Column_List"/>
         from projectinfo where 1 = 1

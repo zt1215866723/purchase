@@ -2,21 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lfxwkj.purchase.modular.mapper.ProjectimgMapper">
 
-        <!-- 通用查询映射结果 -->
-        <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Projectimg">
-                    <id column="id" property="id"/>
-                    <result column="projectID" property="projectID"/>
-                    <result column="imgType" property="imgType"/>
-                    <result column="imgClass" property="imgClass"/>
-                    <result column="imgUrl" property="imgUrl"/>
-                    <result column="orderNum" property="orderNum"/>
-        </resultMap>
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Projectimg">
+        <id column="id" property="id"/>
+        <result column="projectID" property="projectID"/>
+        <result column="imgType" property="imgType"/>
+        <result column="imgClass" property="imgClass"/>
+        <result column="imgUrl" property="imgUrl"/>
+        <result column="orderNum" property="orderNum"/>
+    </resultMap>
 
-        <!-- 通用查询结果列 -->
-        <sql id="Base_Column_List">
+    <!--返回图片的类型加图片的url-->
+    <resultMap id="typeImgList" type="com.lfxwkj.purchase.modular.api.result.Projectimglist">
+        <result column="typeName" property="typeName"/>
+        <collection property="list" ofType="com.lfxwkj.purchase.modular.model.result.ProjectimgResult">
+            <result column="id" property="id"/>
+            <result column="projectID" property="projectID"/>
+            <result column="imgType" property="imgType"/>
+            <result column="imgClass" property="imgClass"/>
+            <result column="imgUrl" property="imgUrl"/>
+            <result column="orderNum" property="orderNum"/>
+        </collection>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
             id AS "id", projectID AS "projectID", imgType AS "imgType", imgClass AS "imgClass", imgUrl AS "imgUrl", orderNum AS "orderNum"
-        </sql>
+    </sql>
 
+    <select id="projectimglist" resultMap="typeImgList">
+        select
+          diccontent.name, projectimg.imgUrl, projectimg.imgType, projectimg.orderNum, projectimg.projectID
+        from diccontent inner join projectimg on projectimg.imgType = diccontent.id
+        where 1 = 1
+        and projectID = #{projectID}
+        order by orderNum desc
+        group by diccontent.id
+    </select>
+
+    <select id="selectPicListByprojectId" resultType="String">
+        select
+          imgUrl
+        from projectimg where 1 = 1 and projectID = #{projectID}
+    </select>
 
     <select id="customList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectimgResult"
             parameterType="com.lfxwkj.purchase.modular.model.params.ProjectimgParam">
@@ -25,7 +53,8 @@
         from projectimg where 1 = 1
     </select>
 
-    <select id="customMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectimgParam">
+    <select id="customMapList" resultType="map"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectimgParam">
         select
         <include refid="Base_Column_List"/>
         from projectimg where 1 = 1
@@ -38,7 +67,8 @@
         from projectimg where 1 = 1
     </select>
 
-    <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectimgParam">
+    <select id="customPageMapList" resultType="map"
+            parameterType="com.lfxwkj.purchase.modular.model.params.ProjectimgParam">
         select
         <include refid="Base_Column_List"/>
         from projectimg where 1 = 1

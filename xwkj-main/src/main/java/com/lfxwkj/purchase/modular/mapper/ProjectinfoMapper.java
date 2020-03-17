@@ -3,6 +3,9 @@ package com.lfxwkj.purchase.modular.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lfxwkj.purchase.modular.api.result.Moredetail;
+import com.lfxwkj.purchase.modular.api.result.Projectdetail;
+import com.lfxwkj.purchase.modular.api.result.Projectlist;
 import com.lfxwkj.purchase.modular.entity.Projectinfo;
 import com.lfxwkj.purchase.modular.model.params.ProjectinfoParam;
 import com.lfxwkj.purchase.modular.model.result.ProjectinfoResult;
@@ -22,16 +25,21 @@ import java.util.Map;
 public interface ProjectinfoMapper extends BaseMapper<Projectinfo> {
 
     /**
+     * 更多的项目详情返回得 参数，返回得信息全部，详细
+     */
+    Moredetail modetail(@Param("id") String id);
+
+    /**
      * 项目的详情
      * @param id
      * @return
      */
-    ProjectinfoResult pojectdetail(@Param("id") String id);
+    Projectdetail pojectdetail(@Param("id") String id);
 
     /**
      * 手机端获取项目列表的方法
      */
-    List<ProjectinfoResult> projectlist(ProjectinfoParam paramCondition);
+    List<Projectlist> projectlist(ProjectinfoParam paramCondition);
 
 
     /**

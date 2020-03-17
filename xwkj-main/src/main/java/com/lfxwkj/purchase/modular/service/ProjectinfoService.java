@@ -2,6 +2,9 @@ package com.lfxwkj.purchase.modular.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
+import com.lfxwkj.purchase.modular.api.result.Moredetail;
+import com.lfxwkj.purchase.modular.api.result.Projectdetail;
+import com.lfxwkj.purchase.modular.api.result.Projectlist;
 import com.lfxwkj.purchase.modular.entity.Projectinfo;
 import com.lfxwkj.purchase.modular.model.params.ProjectinfoParam;
 import com.lfxwkj.purchase.modular.model.result.ProjectinfoResult;
@@ -19,17 +22,21 @@ import java.util.List;
  * @since 2020-03-13
  */
 public interface ProjectinfoService extends IService<Projectinfo> {
+    /**
+     * 更多项目详情
+     */
+    Moredetail moredetail(String id);
 
     /**
      * 手机端项目的详情
      *
      */
-    ProjectinfoResult pojectdetail(String id);
+    Projectdetail pojectdetail(String id);
 
     /**
      * 手机端查询项目的列表
      */
-    List<ProjectinfoResult> projectlist(ProjectinfoParam param);
+    List<Projectlist> projectlist(ProjectinfoParam param);
 
     /**
      * 新增
