@@ -69,4 +69,6 @@ public class InfolistResult implements Serializable {
              */
         private Integer isPlay;
 
+        private String linkUrl;
+
 }

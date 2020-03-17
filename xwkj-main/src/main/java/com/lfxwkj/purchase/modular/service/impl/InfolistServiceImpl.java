@@ -64,7 +64,12 @@ import java.util.List;
         return LayuiPageFactory.createPageInfo(page);
         }
 
-        private Serializable getKey(InfolistParam param){
+    @Override
+    public List<InfolistResult> noticeInfoList(InfolistParam param) {
+        return  this.baseMapper.noticeInfoList(param);
+    }
+
+    private Serializable getKey(InfolistParam param){
                 return param.getId();
         }
 

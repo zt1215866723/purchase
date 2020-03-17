@@ -6,12 +6,16 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageFactory;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
+import com.lfxwkj.purchase.modular.api.result.HouselayoutVo;
 import com.lfxwkj.purchase.modular.entity.Houselayout;
 import com.lfxwkj.purchase.modular.mapper.HouselayoutMapper;
+import com.lfxwkj.purchase.modular.mapper.HouselayoutimgMapper;
 import com.lfxwkj.purchase.modular.model.params.HouselayoutParam;
 import com.lfxwkj.purchase.modular.model.result.HouselayoutResult;
+import com.lfxwkj.purchase.modular.model.result.HouselayoutimgResult;
 import  com.lfxwkj.purchase.modular.service.HouselayoutService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -27,6 +31,9 @@ import java.util.List;
  */
 @Service
         public class HouselayoutServiceImpl extends ServiceImpl<HouselayoutMapper, Houselayout>implements HouselayoutService {
+
+        @Autowired
+        HouselayoutimgMapper houselayoutimgMapper;
 
         @Override
         @DataSource(name = "purchase")
@@ -70,7 +77,20 @@ import java.util.List;
         return LayuiPageFactory.createPageInfo(page);
         }
 
-        private Serializable getKey(HouselayoutParam param){
+    @Override
+    public List<HouselayoutVo> houselayoutList(HouselayoutParam param) {
+        return  this.baseMapper.houselayoutList(param);
+    }
+
+    @Override
+    public HouselayoutVo houselayoutDetails(HouselayoutParam param) {
+        HouselayoutVo houselayoutVos = this.baseMapper.houselayoutDetails(param);
+        List<HouselayoutimgResult> imgUrl = houselayoutimgMapper.getImgUrl(param.getId());
+        houselayoutVos.setImgUrlList(imgUrl);
+        return  houselayoutVos;
+    }
+
+    private Serializable getKey(HouselayoutParam param){
                 return param.getId();
         }
 

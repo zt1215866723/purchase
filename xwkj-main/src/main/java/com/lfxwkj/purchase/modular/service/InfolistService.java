@@ -67,4 +67,13 @@ public interface InfolistService extends IService<Infolist> {
          */
         LayuiPageInfo findPageBySpec(InfolistParam param);
 
+        /**
+         * @Description  ：
+         * @methodName   : 小程序获取公告列表
+         * @param        : * @param null :
+         * @return       :
+         * @exception    :
+         * @author       : 张童
+         */
+        List<InfolistResult> noticeInfoList(InfolistParam param);
         }

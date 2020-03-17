@@ -86,6 +86,9 @@ public class Infolist implements Serializable {
     @TableField("isPlay")
     private Integer isPlay;
 
+    @TableField("linkUrl")
+    private String linkUrl;
+
 
     public Long getId() {
         return id;
@@ -223,6 +226,10 @@ public class Infolist implements Serializable {
         this.isPlay = isPlay;
     }
 
+    public String getLinkUrl() { return linkUrl; }
+
+    public void setLinkUrl(String linkUrl) { this.linkUrl = linkUrl; }
+
     @Override
     public String toString() {
         return "Infolist{" +
@@ -243,6 +250,7 @@ public class Infolist implements Serializable {
         ", readNum=" + readNum +
         ", goodNum=" + goodNum +
         ", isPlay=" + isPlay +
+        ", linkUrl=" + linkUrl +
         "}";
     }
 }

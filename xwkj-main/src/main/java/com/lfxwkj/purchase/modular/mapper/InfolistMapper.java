@@ -2,10 +2,12 @@ package com.lfxwkj.purchase.modular.mapper;
 
 import com.lfxwkj.purchase.modular.entity.Infolist;
 import com.lfxwkj.purchase.modular.model.params.InfolistParam;
+import com.lfxwkj.purchase.modular.model.params.ProjectinfoParam;
 import com.lfxwkj.purchase.modular.model.result.InfolistResult;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lfxwkj.purchase.modular.model.result.ProjectinfoResult;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -54,4 +56,11 @@ public interface InfolistMapper extends BaseMapper<Infolist> {
          */
         Page<Map<String, Object>>customPageMapList(@Param("page") Page page, @Param("paramCondition") InfolistParam paramCondition);
 
-        }
+        /**
+         * 获取公告列表
+         * @author : 张童
+         */
+
+        List<InfolistResult> noticeInfoList(@Param("paramCondition") InfolistParam paramCondition);
+
+}

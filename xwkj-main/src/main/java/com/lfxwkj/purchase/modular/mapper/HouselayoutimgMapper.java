@@ -53,4 +53,14 @@ public interface HouselayoutimgMapper extends BaseMapper<Houselayoutimg> {
          */
         Page<Map<String, Object>>customPageMapList(@Param("page") Page page, @Param("paramCondition") HouselayoutimgParam paramCondition);
 
+        /**
+         * @Description  ：
+         * @methodName   : getImgUrl
+         * @param        : * @param houseId :
+         * @return       : java.util.List<com.lfxwkj.purchase.modular.model.result.HouselayoutimgResult>
+         * @exception    :
+         * @author       : 张童
+         */
+
+        List<HouselayoutimgResult> getImgUrl(@Param("houseId")Long houseId);
         }

@@ -23,6 +23,8 @@ public class HouselayoutParam implements Serializable, BaseValidatingParam {
 
         private Long id;
 
+        private Long houseType;
+
         private Long projectID;
 
             /**

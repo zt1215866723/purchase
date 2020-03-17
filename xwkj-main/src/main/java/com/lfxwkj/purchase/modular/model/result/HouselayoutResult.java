@@ -22,6 +22,8 @@ public class HouselayoutResult implements Serializable {
 
         private Long id;
 
+        private Long houseType;
+
         private Long projectID;
 
             /**
