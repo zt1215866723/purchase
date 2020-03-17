@@ -87,10 +87,10 @@
     </select>
 
     <select id="projectlistBysalesID" resultType="com.lfxwkj.purchase.modular.model.result.ProjectinfoResult">
-        select <include refid="Base_Column_List"/>
+        select t.id AS "id", t.areaId AS "areaId", t.NAME AS "name", t.recordName AS "recordName", t.price AS "price", t.Tel AS "Tel", t.address AS "address", t.addrLng AS "addrLng", t.addrLat AS "addrLat", t.propertyType AS "propertyType", t.projectAdv AS "projectAdv", t.buildType AS "buildType", t.renovation AS "renovation", t.years AS "years", t.developer AS "developer", t.handDate AS "handDate", t.saleStatus AS "saleStatus", t.openDate AS "openDate", t.saleAddr AS "saleAddr", t.saleAddrLng AS "saleAddrLng", t.saleAddrLat AS "saleAddrLat", t.areaCovered AS "areaCovered", t.buildArea AS "buildArea", t.plotRatio AS "plotRatio", t.greenRate AS "greenRate", t.ParkNum AS "ParkNum", t.floorNum AS "floorNum", t.houseNum AS "houseNum", t.propertyCorp AS "propertyCorp", t.propertyPrice AS "propertyPrice", t.storeyCon AS "storeyCon", t.projectIntro AS "projectIntro", t.projectSpot AS "projectSpot", t.STATUS AS "status"
         from projectinfo t
         left join projectsalesperson k on k.`projectID` = t.`id`
-        where k.`salespersonID` = {value}
+        where k.`salespersonID` = #{value}
     </select>
 
 </mapper>

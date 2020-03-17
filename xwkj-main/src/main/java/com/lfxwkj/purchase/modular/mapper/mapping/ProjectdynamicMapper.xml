@@ -51,7 +51,7 @@
         select t.id AS "id", t.projectId AS "projectId", t.dynamicType AS "dynamicType", t.title AS "title", t.dynamicDate AS "dynamicDate", t.content AS "content",k.`name` as "dynamicName"
         from projectdynamic t
         left join `diccontent` k on k.id = t.`dynamicType`
-        where t.`projectID` = {param.projectId}
+        where t.`projectID` = #{param.projectId}
     </select>
 
 </mapper>

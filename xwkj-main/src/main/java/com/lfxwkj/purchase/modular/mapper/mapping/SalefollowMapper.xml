@@ -46,7 +46,7 @@
         select t.`followTime` as "time",k.`name` as "content"
         from salefollow t
         left join clientinfo k on k.`id` = t.`clientID`
-        where t.`salesID` = {value}
+        where t.`salesID` = #{value}
     </select>
 
 </mapper>
