@@ -22,11 +22,12 @@
                     <result column="goodNum" property="goodNum"/>
                     <result column="isPlay" property="isPlay"/>
                     <result column="linkUrl" property="linkUrl"/>
+                    <result column="isShow" property="isShow"/>
         </resultMap>
 
         <!-- 通用查询结果列 -->
         <sql id="Base_Column_List">
-            id AS "id", infoType AS "infoType", projectID AS "projectID", title AS "title", listTitle AS "listTitle", listPicUrl AS "listPicUrl", tagLabel AS "tagLabel", abstrac AS "abstrac", topLevel AS "topLevel", topTime AS "topTime", content AS "content", createTime AS "createTime", createUserId AS "createUserId", status AS "status", readNum AS "readNum", goodNum AS "goodNum", isPlay AS "isPlay", linkUrl AS "linkUrl"
+            id AS "id", infoType AS "infoType", projectID AS "projectID", title AS "title", listTitle AS "listTitle", listPicUrl AS "listPicUrl", tagLabel AS "tagLabel", abstrac AS "abstrac", topLevel AS "topLevel", topTime AS "topTime", content AS "content", createTime AS "createTime", createUserId AS "createUserId", status AS "status", readNum AS "readNum", goodNum AS "goodNum", isPlay AS "isPlay", linkUrl AS "linkUrl",isShow AS "isShow"
         </sql>
 
 
@@ -64,8 +65,17 @@
             infolist
         WHERE
             1 = 1
-            <if test="paramCondition.infoType != null and paramCondition.infoType !=''">
-                AND infoType LIKE CONCAT('%',#{paramCondition.infoType},'%')
+            <if test="paramCondition.infoType != null">
+                AND infoType = #{paramCondition.infoType}
+            </if>
+            <if test="paramCondition.projectID != null and paramCondition.projectID !=''">
+                AND projectID = #{paramCondition.projectID}
+            </if>
+            <if test="paramCondition.isShow != null">
+                AND isShow = #{paramCondition.isShow}
+            </if>
+            <if test="paramCondition.id != null and paramCondition.id !=''">
+                AND id = #{paramCondition.id}
             </if>
             AND STATUS = 1
     </select>

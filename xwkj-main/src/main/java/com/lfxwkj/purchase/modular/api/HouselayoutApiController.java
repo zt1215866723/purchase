@@ -4,10 +4,7 @@ import com.lfxwkj.purchase.modular.api.result.HouselayoutVo;
 import com.lfxwkj.purchase.modular.model.params.HouselayoutParam;
 import com.lfxwkj.purchase.modular.model.result.HouselayoutResult;
 import com.lfxwkj.purchase.modular.service.HouselayoutService;
-import com.lfxwkj.purchase.modular.utils.JsonUtils;
-import com.lfxwkj.purchase.modular.utils.ResponseApi;
-import com.lfxwkj.purchase.modular.utils.SignDataTranstor;
-import com.lfxwkj.purchase.modular.utils.WebUtils;
+import com.lfxwkj.purchase.modular.utils.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +35,14 @@ public class HouselayoutApiController {
      *
      * @author 张童
      */
-    @RequestMapping(value = "/houseLayoutlist", method = RequestMethod.GET)
+    @RequestMapping(value = "/houseLayoutlist", method = {RequestMethod.GET,RequestMethod.POST})
     public void houseLayoutlist(HttpServletResponse response, String data) {
         ResponseApi responseApi = new ResponseApi();
         // 解密,验证token是否失效，验证签名是否正确，拿到请求的数据。
-        Map<String, String> map = SignDataTranstor.getData(data);
+        SignData sign = JsonUtils.getData(data,SignData.class);
+       // Map<String, String> map = SignDataTranstor.getData(data);
         // 将请求的参数转换为对象
-        HouselayoutParam param = JsonUtils.getData(JsonUtils.toJSON(map), HouselayoutParam.class);
+        HouselayoutParam param = JsonUtils.getData(JsonUtils.toJSON(sign), HouselayoutParam.class);
         try {
             log.info("获取主力户型接口， 户型列表的方法");
             List<HouselayoutVo> list = houselayoutService.houselayoutList(param);
@@ -62,13 +60,14 @@ public class HouselayoutApiController {
      *
      * @author 张童
      */
-    @RequestMapping(value = "/houseLayoutdetail", method = RequestMethod.GET)
+    @RequestMapping(value = "/houseLayoutdetail", method = {RequestMethod.GET,RequestMethod.POST})
     public void houseLayoutdetail(HttpServletResponse response, String data) {
         ResponseApi responseApi = new ResponseApi();
         // 解密,验证token是否失效，验证签名是否正确，拿到请求的数据。
-        Map<String, String> map = SignDataTranstor.getData(data);
+        SignData sign = JsonUtils.getData(data,SignData.class);
+        //Map<String, String> map = SignDataTranstor.getData(data);
         // 将请求的参数转换为对象
-        HouselayoutParam param = JsonUtils.getData(JsonUtils.toJSON(map), HouselayoutParam.class);
+        HouselayoutParam param = JsonUtils.getData(JsonUtils.toJSON(sign), HouselayoutParam.class);
 //        HouselayoutParam param = new HouselayoutParam();
 //        param.setId(houseLayID);
         try {

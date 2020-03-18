@@ -71,4 +71,5 @@ public class InfolistResult implements Serializable {
 
         private String linkUrl;
 
+        private Integer isShow;
 }

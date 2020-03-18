@@ -9,10 +9,7 @@ import com.lfxwkj.purchase.modular.model.params.ProjectinfoParam;
 import com.lfxwkj.purchase.modular.model.result.InfolistResult;
 import com.lfxwkj.purchase.modular.model.result.ProjectinfoResult;
 import com.lfxwkj.purchase.modular.service.InfolistService;
-import com.lfxwkj.purchase.modular.utils.JsonUtils;
-import com.lfxwkj.purchase.modular.utils.ResponseApi;
-import com.lfxwkj.purchase.modular.utils.SignDataTranstor;
-import com.lfxwkj.purchase.modular.utils.WebUtils;
+import com.lfxwkj.purchase.modular.utils.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,9 +46,10 @@ public class InfolistApiController {
     public void noticelist(HttpServletResponse response, String data) {
         ResponseApi responseApi = new ResponseApi();
         // 解密,验证token是否失效，验证签名是否正确，拿到请求的数据。
-        Map<String, String> map = SignDataTranstor.getData(data);
+        SignData sign = JsonUtils.getData(data,SignData.class);
+       // Map<String, String> map = SignDataTranstor.getData(data);
         // 将请求的参数转换为对象
-        InfolistParam param = JsonUtils.getData(JsonUtils.toJSON(map), InfolistParam.class);
+        InfolistParam param = JsonUtils.getData(JsonUtils.toJSON(sign), InfolistParam.class);
         try {
             log.info("获取首页公告列表的方法");
             List<InfolistResult> list = infolistService.noticeInfoList(param);
