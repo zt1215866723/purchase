@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lfxwkj.purchase.modular.entity.Salefollow;
 import com.lfxwkj.purchase.modular.model.params.SalefollowParam;
 import com.lfxwkj.purchase.modular.model.result.SalefollowResult;
+import com.lfxwkj.purchase.modular.model.result.SalespersonResult;
 import com.lfxwkj.purchase.modular.model.vo.SaleFollowVo;
 import org.apache.ibatis.annotations.Param;
 
@@ -59,4 +60,9 @@ public interface SalefollowMapper extends BaseMapper<Salefollow> {
          * @return
          */
     List<SaleFollowVo> saleFollowBysalesID(Long id);
+
+        /**
+         * 根据客户查询销售顾问名片
+         */
+    List<SalespersonResult> salefollowlist(SalefollowParam param);
 }

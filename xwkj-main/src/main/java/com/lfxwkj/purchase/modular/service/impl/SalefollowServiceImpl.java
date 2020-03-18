@@ -10,6 +10,7 @@ import com.lfxwkj.purchase.modular.entity.Salefollow;
 import com.lfxwkj.purchase.modular.mapper.SalefollowMapper;
 import com.lfxwkj.purchase.modular.model.params.SalefollowParam;
 import com.lfxwkj.purchase.modular.model.result.SalefollowResult;
+import com.lfxwkj.purchase.modular.model.result.SalespersonResult;
 import  com.lfxwkj.purchase.modular.service.SalefollowService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -70,7 +71,13 @@ import java.util.List;
         return LayuiPageFactory.createPageInfo(page);
         }
 
-        private Serializable getKey(SalefollowParam param){
+    @Override
+    @DataSource(name = "purchase")
+    public List<SalespersonResult> salefollowlist(SalefollowParam param) {
+        return  this.baseMapper.salefollowlist(param);
+    }
+
+    private Serializable getKey(SalefollowParam param){
                 return param.getId();
         }
 
