@@ -39,11 +39,19 @@
     <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.HouselayoutResult"
             parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutParam">
         select
-        <include refid="Base_Column_List"/>
-        from houselayout where 1 = 1
-        <if test="paramCondition.layoutName != null and paramCondition.layoutName !=''">
-            AND layoutName LIKE CONCAT('%',#{paramCondition.layoutName},'%')
-        </if>
+          h.*,
+          p.NAME AS projectName,
+          d.`name` AS saleName
+        FROM
+            houselayout h
+            LEFT JOIN projectinfo p on h.projectID = p.id
+            LEFT JOIN diccontent d ON d.id = h.saleStatus
+        where 1 = 1
+            <if test="paramCondition.layoutName != null and paramCondition.layoutName !=''">
+                AND layoutName LIKE CONCAT('%',#{paramCondition.layoutName},'%')
+            </if>
+                AND d.typeID = 4
+        order by orderNum DESC
     </select>
 
     <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutParam">

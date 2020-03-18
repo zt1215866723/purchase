@@ -63,4 +63,11 @@ public interface InfolistMapper extends BaseMapper<Infolist> {
 
         List<InfolistResult> noticeInfoList(@Param("paramCondition") InfolistParam paramCondition);
 
+        /**
+         * 获取新闻详情列表
+         * @author : 张童
+         */
+
+        InfolistResult noticeDetails(@Param("paramCondition") InfolistParam paramCondition);
+
 }

@@ -95,4 +95,9 @@ import java.util.List;
         return entity;
         }
 
+    @Override
+    @DataSource(name = "purchase")
+    public InfolistResult noticeDetails(InfolistParam param) {
+        return  this.baseMapper.noticeDetails(param);
+    }
         }

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 
 /**
  * 控制器
@@ -124,6 +126,23 @@ public class SalefollowController extends BaseController {
         return this.salefollowService.findPageBySpec(salefollowParam);
     }
 
+
+    /**
+     * 新增接口
+     *
+     * @author 郭晓东
+     * @Date 2020-03-12
+     */
+    @RequestMapping("/addItemApoint")
+    @ResponseBody
+    public ResponseData addItemApoint(Long id , Long salePerson) {
+        SalefollowParam salefollowParam = new SalefollowParam();
+        salefollowParam.setSalesID(salePerson);
+        salefollowParam.setClientID(id);
+        salefollowParam.setFollowTime(new Date());
+        this.salefollowService.add(salefollowParam);
+        return ResponseData.success();
+    }
 }
 
 

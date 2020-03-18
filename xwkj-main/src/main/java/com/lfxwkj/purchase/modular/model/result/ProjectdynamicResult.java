@@ -37,4 +37,7 @@ public class ProjectdynamicResult implements Serializable {
 
         private String dynamicName;
 
+        private String projectName;
+
+        private String dynamicTypeName;
 }

@@ -126,6 +126,21 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             Clientinfo.openEditDlg(data);
         } else if (layEvent === 'delete') {
             Clientinfo.onDeleteItem(data);
+        }else if (layEvent === 'appoint') {
+            Clientinfo.onAppointItem(data);
         }
     });
+    /**
+     * 点击指定销售员
+     *
+     * @param data 点击按钮时候的行数据
+     */
+    Clientinfo.onAppointItem = function (data) {
+        console.log(data.id)
+        func.open({
+            title: '制定销售员',
+            content: Feng.ctxPath + '/clientinfo/appoint?id=' + data.id,
+            tableId: Clientinfo.tableId
+        });
+    };
 });

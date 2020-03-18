@@ -63,4 +63,8 @@ public class HouselayoutResult implements Serializable {
             * 1是主力户型，2不是主力户型
             */
         private Integer isMain;
+
+        private String projectName;
+
+        private String saleName;
 }

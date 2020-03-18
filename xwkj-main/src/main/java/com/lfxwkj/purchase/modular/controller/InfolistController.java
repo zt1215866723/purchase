@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/infolist")
 public class InfolistController extends BaseController {
 
-    private String PREFIX = "/assets/infolist";
+    private String PREFIX = "/modular/infolist";
 
     @Autowired
     private InfolistService infolistService;

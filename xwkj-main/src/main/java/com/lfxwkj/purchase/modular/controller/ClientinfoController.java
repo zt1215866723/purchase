@@ -120,6 +120,15 @@ public class ClientinfoController extends BaseController {
     }
 
     /**
+     * 将指定的客户指定给指定的销售员
+     *
+     * @author 张童
+     * @Date 2020-03-13
+     */
+    @RequestMapping("/appoint")
+    public String appoint() { return PREFIX + "/clientinfo_appoint.html"; }
+
+    /**
      * 查询列表
      *
      * @author 郭晓东

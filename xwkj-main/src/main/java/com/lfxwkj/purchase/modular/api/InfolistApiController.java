@@ -47,13 +47,38 @@ public class InfolistApiController {
         ResponseApi responseApi = new ResponseApi();
         // 解密,验证token是否失效，验证签名是否正确，拿到请求的数据。
         SignData sign = JsonUtils.getData(data,SignData.class);
-       // Map<String, String> map = SignDataTranstor.getData(data);
+        // Map<String, String> map = SignDataTranstor.getData(data);
         // 将请求的参数转换为对象
         InfolistParam param = JsonUtils.getData(JsonUtils.toJSON(sign), InfolistParam.class);
         try {
             log.info("获取首页公告列表的方法");
             List<InfolistResult> list = infolistService.noticeInfoList(param);
             responseApi.success(list);
+        } catch (Exception e) {
+            log.error(e.toString());
+            responseApi.fail();
+        }finally {
+            WebUtils.sendJSON(responseApi, response);
+        }
+    }
+
+    /**
+     * 获取新闻详情接口
+     *
+     * @author 张童
+     */
+    @RequestMapping(value = "/noticeDetails", method = RequestMethod.GET)
+    public void noticeDetails(HttpServletResponse response, String data) {
+        ResponseApi responseApi = new ResponseApi();
+        // 解密,验证token是否失效，验证签名是否正确，拿到请求的数据。
+        SignData sign = JsonUtils.getData(data,SignData.class);
+        // Map<String, String> map = SignDataTranstor.getData(data);
+        // 将请求的参数转换为对象
+        InfolistParam param = JsonUtils.getData(JsonUtils.toJSON(sign), InfolistParam.class);
+        try {
+            log.info("获取新闻详情的方法");
+            InfolistResult newsInfo = infolistService.noticeDetails(param);
+            responseApi.success(newsInfo);
         } catch (Exception e) {
             log.error(e.toString());
             responseApi.fail();

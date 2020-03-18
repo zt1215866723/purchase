@@ -3,6 +3,7 @@ package com.lfxwkj.purchase.modular.controller;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Salesperson;
 import com.lfxwkj.purchase.modular.model.params.SalespersonParam;
+import com.lfxwkj.purchase.modular.model.result.SalespersonResult;
 import com.lfxwkj.purchase.modular.service.SalespersonService;
 import cn.stylefeng.roses.core.base.controller.BaseController;
 import cn.stylefeng.roses.kernel.model.response.ResponseData;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 
 /**
@@ -124,6 +127,17 @@ public class SalespersonController extends BaseController {
         return this.salespersonService.findPageBySpec(salespersonParam);
     }
 
+    /**
+     * 查询列表
+     *
+     * @author 郭晓东
+     * @Date 2020-03-12
+     */
+    @ResponseBody
+    @RequestMapping("/personlist")
+    public List<SalespersonResult> personList(SalespersonParam salespersonParam) {
+        return this.salespersonService.findListBySpec(salespersonParam);
+    }
 }
 
 

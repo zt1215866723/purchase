@@ -19,11 +19,11 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
         return [[
             {type: 'checkbox'},
             {field: 'id', hide: true, title: ''},
-            {field: 'projectId', sort: true, title: ''},
-            {field: 'dynamicType', sort: true, title: '预售证、开盘、交房等'},
-            {field: 'title', sort: true, title: ''},
-            {field: 'dynamicDate', sort: true, title: ''},
-            {field: 'content', sort: true, title: ''},
+            {field: 'projectName', sort: true, title: '项目名称'},
+            {field: 'dynamicTypeName', sort: true, title: '动态类型'},
+            {field: 'title', sort: true, title: '标题'},
+            {field: 'dynamicDate', sort: true, title: '日期'},
+            {field: 'content', sort: true, title: '内容'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };

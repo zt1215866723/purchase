@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.service.impl;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -28,17 +29,20 @@ import java.util.List;
         public class SalefollowServiceImpl extends ServiceImpl<SalefollowMapper, Salefollow>implements SalefollowService {
 
         @Override
+        @DataSource(name = "purchase")
         public void add(SalefollowParam param){
     Salefollow entity=getEntity(param);
         this.save(entity);
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void delete(SalefollowParam param){
         this.removeById(getKey(param));
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void update(SalefollowParam param){
     Salefollow oldEntity=getOldEntity(param);
     Salefollow newEntity=getEntity(param);
@@ -47,16 +51,19 @@ import java.util.List;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public SalefollowResult findBySpec(SalefollowParam param){
         return null;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public List<SalefollowResult> findListBySpec(SalefollowParam param){
         return null;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public LayuiPageInfo findPageBySpec(SalefollowParam param){
         Page pageContext=getPageContext();
         IPage page=this.baseMapper.customPageList(pageContext,param);

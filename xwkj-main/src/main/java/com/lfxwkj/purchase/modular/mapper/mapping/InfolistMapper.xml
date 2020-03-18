@@ -46,9 +46,13 @@
 
     <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.InfolistResult"
             parameterType="com.lfxwkj.purchase.modular.model.params.InfolistParam">
-        select
-        <include refid="Base_Column_List"/>
-        from infolist where 1 = 1
+        SELECT
+            i.*,p.`NAME` AS projectName
+        FROM
+            infolist i
+            left JOIN projectinfo p on i.projectID = p.id
+        WHERE
+            1 = 1
     </select>
 
     <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.InfolistParam">
@@ -74,9 +78,23 @@
             <if test="paramCondition.isShow != null">
                 AND isShow = #{paramCondition.isShow}
             </if>
-            <if test="paramCondition.id != null and paramCondition.id !=''">
-                AND id = #{paramCondition.id}
-            </if>
             AND STATUS = 1
+    </select>
+
+    <select id="noticeDetails" resultType="com.lfxwkj.purchase.modular.model.result.InfolistResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.InfolistParam">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        infolist
+        WHERE
+        1 = 1
+        <if test="paramCondition.infoType != null">
+            AND infoType = #{paramCondition.infoType}
+        </if>
+        <if test="paramCondition.id != null and paramCondition.id !=''">
+            AND id = #{paramCondition.id}
+        </if>
+        AND STATUS = 1
     </select>
 </mapper>

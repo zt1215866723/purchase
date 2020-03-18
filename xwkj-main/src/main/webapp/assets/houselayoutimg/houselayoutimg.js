@@ -97,7 +97,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
     // 渲染表格
     var tableResult = table.render({
         elem: '#' + Houselayoutimg.tableId,
-        url: Feng.ctxPath + '/houselayoutimg/list',
+        url: Feng.ctxPath + '/houselayoutimg/list?houseLayID=' + Feng.getUrlParam("id"),
         page: true,
         height: "full-158",
         cellMinWidth: 100,

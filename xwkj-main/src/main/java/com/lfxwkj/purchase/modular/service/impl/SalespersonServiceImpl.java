@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.service.impl;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -39,17 +40,20 @@ import java.util.List;
     @Autowired(required = false)
     private SalefollowMapper salefollowMapper;
         @Override
+        @DataSource(name = "purchase")
         public void add(SalespersonParam param){
     Salesperson entity=getEntity(param);
         this.save(entity);
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void delete(SalespersonParam param){
         this.removeById(getKey(param));
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void update(SalespersonParam param){
     Salesperson oldEntity=getOldEntity(param);
     Salesperson newEntity=getEntity(param);
@@ -58,16 +62,19 @@ import java.util.List;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public SalespersonResult findBySpec(SalespersonParam param){
         return null;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public List<SalespersonResult> findListBySpec(SalespersonParam param){
-        return null;
+        return this.baseMapper.customList(param);
         }
 
         @Override
+        @DataSource(name = "purchase")
         public LayuiPageInfo findPageBySpec(SalespersonParam param){
         Page pageContext=getPageContext();
 
