@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.controller;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Clientinfo;
 import com.lfxwkj.purchase.modular.mapper.ClientinfoMapper;
@@ -111,6 +112,7 @@ public class ClientinfoController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/detail")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData detail(ClientinfoParam clientinfoParam) {
         Clientinfo detail = this.clientinfoService.getById(clientinfoParam.getId());

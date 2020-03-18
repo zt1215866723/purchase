@@ -30,17 +30,20 @@ import java.util.List;
         public class InfolistServiceImpl extends ServiceImpl<InfolistMapper, Infolist>implements InfolistService {
 
         @Override
+        @DataSource(name = "purchase")
         public void add(InfolistParam param){
     Infolist entity=getEntity(param);
         this.save(entity);
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void delete(InfolistParam param){
         this.removeById(getKey(param));
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void update(InfolistParam param){
     Infolist oldEntity=getOldEntity(param);
     Infolist newEntity=getEntity(param);
@@ -49,16 +52,19 @@ import java.util.List;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public InfolistResult findBySpec(InfolistParam param){
         return null;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public List<InfolistResult> findListBySpec(InfolistParam param){
         return null;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public LayuiPageInfo findPageBySpec(InfolistParam param){
         Page pageContext=getPageContext();
         IPage page=this.baseMapper.customPageList(pageContext,param);

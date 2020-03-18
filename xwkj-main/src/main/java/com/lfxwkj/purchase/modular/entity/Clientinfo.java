@@ -31,6 +31,8 @@ public class Clientinfo implements Serializable {
     @TableField("phone")
     private String phone;
 
+    @TableField("name")
+    private String name;
 
     public Long getId() {
         return id;
@@ -56,12 +58,17 @@ public class Clientinfo implements Serializable {
         this.phone = phone;
     }
 
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
+
     @Override
     public String toString() {
         return "Clientinfo{" +
         "id=" + id +
         ", openID=" + openID +
         ", phone=" + phone +
+        ", name=" + name +
         "}";
     }
 }

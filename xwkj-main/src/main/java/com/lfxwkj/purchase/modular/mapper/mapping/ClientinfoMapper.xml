@@ -7,11 +7,12 @@
                     <id column="id" property="id"/>
                     <result column="openID" property="openID"/>
                     <result column="phone" property="phone"/>
+                    <result column="name" property="name"/>
         </resultMap>
 
         <!-- 通用查询结果列 -->
         <sql id="Base_Column_List">
-            id AS "id", openID AS "openID", phone AS "phone"
+            id AS "id", openID AS "openID", phone AS "phone", name AS "name"
         </sql>
 
 
@@ -33,6 +34,9 @@
         select
         <include refid="Base_Column_List"/>
         from clientinfo where 1 = 1
+        <if test="paramCondition.name != null and paramCondition.name !=''">
+            AND name LIKE CONCAT('%',#{paramCondition.name},'%')
+        </if>
     </select>
 
     <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ClientinfoParam">

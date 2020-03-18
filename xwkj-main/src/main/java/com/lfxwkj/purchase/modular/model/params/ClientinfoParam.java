@@ -30,6 +30,8 @@ public class ClientinfoParam implements Serializable, BaseValidatingParam {
              */
         private String phone;
 
+        private String name;
+
     @Override
     public String checkParam() {
         return null;
