@@ -9,7 +9,9 @@ var SalespersonInfoDlg = {
         weChatNo: "",
         QRCodeUrl: "",
         goodNum: "",
-        serviceNum: ""
+        serviceNum: "",
+        saleSign:"",
+        salePosition:""
     }
 };
 

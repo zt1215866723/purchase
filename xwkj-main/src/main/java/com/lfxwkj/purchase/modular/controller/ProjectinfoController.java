@@ -2,6 +2,7 @@ package com.lfxwkj.purchase.modular.controller;
 
 
 import cn.stylefeng.roses.core.base.controller.BaseController;
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import cn.stylefeng.roses.kernel.model.response.ResponseData;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Projectinfo;
@@ -120,6 +121,7 @@ public class ProjectinfoController extends BaseController {
      * @Date 2020-03-13
      */
     @ResponseBody
+    @DataSource(name = "purchase")
     @RequestMapping("/list")
     public LayuiPageInfo list(ProjectinfoParam projectinfoParam) {
         return this.projectinfoService.findPageBySpec(projectinfoParam);

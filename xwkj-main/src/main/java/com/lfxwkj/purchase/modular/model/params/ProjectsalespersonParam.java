@@ -1,11 +1,9 @@
 package com.lfxwkj.purchase.modular.model.params;
 
-import lombok.Data;
 import cn.stylefeng.roses.kernel.model.validator.BaseValidatingParam;
+import lombok.Data;
 
-import java.util.Date;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * <p>
@@ -31,6 +29,12 @@ public class ProjectsalespersonParam implements Serializable, BaseValidatingPara
              * 默认为0  值越大靠前
              */
         private Integer orderNum;
+
+        private Integer isMain;
+
+        private String projectinfoName;
+
+        private String salespersonName;
 
     @Override
     public String checkParam() {

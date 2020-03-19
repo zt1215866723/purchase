@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author 郭晓东
@@ -17,9 +18,9 @@ import java.io.Serializable;
 @TableName("projectsalesperson")
 public class Projectsalesperson implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
-      @TableId(value = "id", type = IdType.ID_WORKER)
+    @TableId(value = "id", type = IdType.ID_WORKER)
     private Long id;
 
     @TableField("projectID")
@@ -27,6 +28,17 @@ public class Projectsalesperson implements Serializable {
 
     @TableField("salespersonID")
     private Long salespersonID;
+
+    public Long getIsMain() {
+        return isMain;
+    }
+
+    public void setIsMain(Long isMain) {
+        this.isMain = isMain;
+    }
+
+    @TableField("isMain")
+    private Long isMain;
 
     /**
      * 默认为0  值越大靠前
@@ -70,10 +82,11 @@ public class Projectsalesperson implements Serializable {
     @Override
     public String toString() {
         return "Projectsalesperson{" +
-        "id=" + id +
-        ", projectID=" + projectID +
-        ", salespersonID=" + salespersonID +
-        ", orderNum=" + orderNum +
-        "}";
+                "id=" + id +
+                ", projectID=" + projectID +
+                ", salespersonID=" + salespersonID +
+                ", isMain=" + isMain +
+                ", orderNum=" + orderNum +
+                '}';
     }
 }

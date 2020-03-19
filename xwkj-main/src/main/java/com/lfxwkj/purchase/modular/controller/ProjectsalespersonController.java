@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.controller;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Projectsalesperson;
 import com.lfxwkj.purchase.modular.model.params.ProjectsalespersonParam;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/projectsalesperson")
 public class ProjectsalespersonController extends BaseController {
 
-    private String PREFIX = "/assets/projectsalesperson";
+    private String PREFIX = "/modular/projectsalesperson";
 
     @Autowired
     private ProjectsalespersonService projectsalespersonService;
@@ -69,7 +70,7 @@ public class ProjectsalespersonController extends BaseController {
     @RequestMapping("/addItem")
     @ResponseBody
     public ResponseData addItem(ProjectsalespersonParam projectsalespersonParam) {
-        this.projectsalespersonService.add(projectsalespersonParam);
+//        this.projectsalespersonService.add(projectsalespersonParam);
         return ResponseData.success();
     }
 
@@ -80,8 +81,12 @@ public class ProjectsalespersonController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/editItem")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData editItem(ProjectsalespersonParam projectsalespersonParam) {
+        if (projectsalespersonParam.getIsMain() == null){
+            projectsalespersonParam.setIsMain(0);
+        }
         this.projectsalespersonService.update(projectsalespersonParam);
         return ResponseData.success();
     }
@@ -93,6 +98,7 @@ public class ProjectsalespersonController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/delete")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData delete(ProjectsalespersonParam projectsalespersonParam) {
         this.projectsalespersonService.delete(projectsalespersonParam);
@@ -106,6 +112,7 @@ public class ProjectsalespersonController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/detail")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData detail(ProjectsalespersonParam projectsalespersonParam) {
         Projectsalesperson detail = this.projectsalespersonService.getById(projectsalespersonParam.getId());
@@ -119,6 +126,7 @@ public class ProjectsalespersonController extends BaseController {
      * @Date 2020-03-12
      */
     @ResponseBody
+    @DataSource(name = "purchase")
     @RequestMapping("/list")
     public LayuiPageInfo list(ProjectsalespersonParam projectsalespersonParam) {
         return this.projectsalespersonService.findPageBySpec(projectsalespersonParam);

@@ -1,4 +1,4 @@
-@layout("/common/_container.html",{js:["/assets/assets/projectsalesperson/projectsalesperson.js"]}){
+@layout("/common/_container.html",{js:["/assets/projectsalesperson/projectsalesperson.js"]}){
 
 <div class="layui-body-header">
     <span class="layui-body-header-title">管理</span>
@@ -12,7 +12,10 @@
                     <div class="layui-form toolbar">
                         <div class="layui-form-item">
                             <div class="layui-inline">
-                                <input id="condition" class="layui-input" type="text" placeholder="名称"/>
+                                <input id="projectinfoName" class="layui-input" type="text" placeholder="项目名字"/>
+                            </div>
+                            <div class="layui-inline">
+                                <input id="salespersonName" class="layui-input" type="text" placeholder="销售名称"/>
                             </div>
                             <div class="layui-inline">
                                 <button id="btnSearch" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>

@@ -1,12 +1,13 @@
 package com.lfxwkj.purchase.modular.controller;
 
+import cn.stylefeng.roses.core.base.controller.BaseController;
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
+import cn.stylefeng.roses.kernel.model.response.ResponseData;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Salesperson;
 import com.lfxwkj.purchase.modular.model.params.SalespersonParam;
 import com.lfxwkj.purchase.modular.model.result.SalespersonResult;
 import com.lfxwkj.purchase.modular.service.SalespersonService;
-import cn.stylefeng.roses.core.base.controller.BaseController;
-import cn.stylefeng.roses.kernel.model.response.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ import java.util.List;
 @RequestMapping("/salesperson")
 public class SalespersonController extends BaseController {
 
-    private String PREFIX = "/assets/salesperson";
+    private String PREFIX = "/modular/salesperson";
 
     @Autowired
     private SalespersonService salespersonService;
@@ -70,6 +71,7 @@ public class SalespersonController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/addItem")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData addItem(SalespersonParam salespersonParam) {
         this.salespersonService.add(salespersonParam);
@@ -83,6 +85,7 @@ public class SalespersonController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/editItem")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData editItem(SalespersonParam salespersonParam) {
         this.salespersonService.update(salespersonParam);
@@ -96,9 +99,11 @@ public class SalespersonController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/delete")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData delete(SalespersonParam salespersonParam) {
-        this.salespersonService.delete(salespersonParam);
+        salespersonParam.setStatus(1);
+        this.salespersonService.update(salespersonParam);
         return ResponseData.success();
     }
 
@@ -109,6 +114,7 @@ public class SalespersonController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/detail")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData detail(SalespersonParam salespersonParam) {
         Salesperson detail = this.salespersonService.getById(salespersonParam.getId());
@@ -122,6 +128,7 @@ public class SalespersonController extends BaseController {
      * @Date 2020-03-12
      */
     @ResponseBody
+    @DataSource(name = "purchase")
     @RequestMapping("/list")
     public LayuiPageInfo list(SalespersonParam salespersonParam) {
         return this.salespersonService.findPageBySpec(salespersonParam);

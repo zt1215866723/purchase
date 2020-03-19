@@ -12,11 +12,14 @@
                     <result column="QRCodeUrl" property="QRCodeUrl"/>
                     <result column="goodNum" property="goodNum"/>
                     <result column="serviceNum" property="serviceNum"/>
+                    <result column="saleSign" property="saleSign"/>
+                    <result column="salePosition" property="salePosition"/>
+                    <result column="status" property="status"/>
         </resultMap>
 
         <!-- 通用查询结果列 -->
         <sql id="Base_Column_List">
-            id AS "id", name AS "name", picUrl AS "picUrl", tel AS "tel", weChatNo AS "weChatNo", QRCodeUrl AS "QRCodeUrl", goodNum AS "goodNum", serviceNum AS "serviceNum"
+            id AS "id", name AS "name", picUrl AS "picUrl", tel AS "tel", weChatNo AS "weChatNo", QRCodeUrl AS "QRCodeUrl", goodNum AS "goodNum", serviceNum AS "serviceNum",saleSign AS "saleSign",salePosition AS "salePosition",status AS "status"
         </sql>
 
 
@@ -37,7 +40,10 @@
             parameterType="com.lfxwkj.purchase.modular.model.params.SalespersonParam">
         select
         <include refid="Base_Column_List"/>
-        from salesperson where 1 = 1
+        from salesperson where 1 = 1 and status = 0
+        <if test="paramCondition.name != null and paramCondition.name != ''">
+            and name like concat('%',#{paramCondition.name},'%')
+        </if>
     </select>
 
     <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.SalespersonParam">

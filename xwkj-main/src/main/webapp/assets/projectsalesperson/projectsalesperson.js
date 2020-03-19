@@ -18,10 +18,12 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
     Projectsalesperson.initColumn = function () {
         return [[
             {type: 'checkbox'},
-            {field: 'id', hide: true, title: ''},
-            {field: 'projectID', sort: true, title: ''},
-            {field: 'salespersonID', sort: true, title: ''},
-            {field: 'orderNum', sort: true, title: '默认为0  值越大靠前'},
+            // {field: 'id', hide: true, title: ''},
+            // {field: 'projectID', sort: true, title: ''},
+            // {field: 'salespersonID', sort: true, title: ''},
+            {field: 'projectinfoName', sort: true, title: '项目名字'},
+            {field: 'salespersonName', sort: true, title: '销售名字'},
+            {field: 'orderNum', sort: true, title: '序号'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };
@@ -31,7 +33,8 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      */
     Projectsalesperson.search = function () {
         var queryData = {};
-        queryData['condition'] = $("#condition").val();
+        queryData['projectinfoName'] = $("#projectinfoName").val();
+        queryData['salespersonName'] = $("#salespersonName").val();
         table.reload(Projectsalesperson.tableId, {
             where: queryData, page: {curr: 1}
         });

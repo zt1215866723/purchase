@@ -26,67 +26,67 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author 郭晓东
  * @since 2020-03-12
  */
 @Service
-        public class SalespersonServiceImpl extends ServiceImpl<SalespersonMapper, Salesperson>implements SalespersonService {
+public class SalespersonServiceImpl extends ServiceImpl<SalespersonMapper, Salesperson> implements SalespersonService {
 
     @Autowired(required = false)
     private ProjectinfoMapper projectinfoMapper;
     @Autowired(required = false)
     private SalefollowMapper salefollowMapper;
-        @Override
-        @DataSource(name = "purchase")
-        public void add(SalespersonParam param){
-    Salesperson entity=getEntity(param);
+
+    @Override
+    @DataSource(name = "purchase")
+    public void add(SalespersonParam param) {
+        Salesperson entity = getEntity(param);
         this.save(entity);
-        }
+    }
 
-        @Override
-        @DataSource(name = "purchase")
-        public void delete(SalespersonParam param){
+    @Override
+    @DataSource(name = "purchase")
+    public void delete(SalespersonParam param) {
         this.removeById(getKey(param));
-        }
+    }
 
-        @Override
-        @DataSource(name = "purchase")
-        public void update(SalespersonParam param){
-    Salesperson oldEntity=getOldEntity(param);
-    Salesperson newEntity=getEntity(param);
-        ToolUtil.copyProperties(newEntity,oldEntity);
+    @Override
+    @DataSource(name = "purchase")
+    public void update(SalespersonParam param) {
+        Salesperson oldEntity = getOldEntity(param);
+        Salesperson newEntity = getEntity(param);
+        ToolUtil.copyProperties(newEntity, oldEntity);
         this.updateById(newEntity);
-        }
+    }
 
-        @Override
-        @DataSource(name = "purchase")
-        public SalespersonResult findBySpec(SalespersonParam param){
+    @Override
+    @DataSource(name = "purchase")
+    public SalespersonResult findBySpec(SalespersonParam param) {
         return null;
-        }
+    }
 
-        @Override
-        @DataSource(name = "purchase")
-        public List<SalespersonResult> findListBySpec(SalespersonParam param){
+    @Override
+    @DataSource(name = "purchase")
+    public List<SalespersonResult> findListBySpec(SalespersonParam param) {
         return this.baseMapper.customList(param);
-        }
+    }
 
-        @Override
-        @DataSource(name = "purchase")
-        public LayuiPageInfo findPageBySpec(SalespersonParam param){
-        Page pageContext=getPageContext();
-
-        IPage page=this.baseMapper.customPageList(pageContext,param);
+    @Override
+    @DataSource(name = "purchase")
+    public LayuiPageInfo findPageBySpec(SalespersonParam param) {
+        Page pageContext = getPageContext();
+        IPage page = this.baseMapper.customPageList(pageContext, param);
         return LayuiPageFactory.createPageInfo(page);
-        }
+    }
 
     @Override
     public SalespersonVo salespersonDetail(Long id) {
         Salesperson salesperson = this.baseMapper.selectById(id);
         SalespersonVo salespersonVo = new SalespersonVo();
-        BeanUtils.copyProperties(salesperson,salespersonVo);
+        BeanUtils.copyProperties(salesperson, salespersonVo);
         //查询销售顾问所属项目列表
         List<ProjectinfoResult> projectinfoResultList = projectinfoMapper.projectlistBysalesID(id);
         salespersonVo.setProjectInfo(projectinfoResultList);
@@ -96,22 +96,22 @@ import java.util.List;
         return salespersonVo;
     }
 
-    private Serializable getKey(SalespersonParam param){
-                return param.getId();
-        }
+    private Serializable getKey(SalespersonParam param) {
+        return param.getId();
+    }
 
-        private Page getPageContext(){
+    private Page getPageContext() {
         return LayuiPageFactory.defaultPage();
-        }
+    }
 
-        private Salesperson getOldEntity(SalespersonParam param){
+    private Salesperson getOldEntity(SalespersonParam param) {
         return this.getById(getKey(param));
-        }
+    }
 
-        private Salesperson getEntity(SalespersonParam param){
-    Salesperson entity=new Salesperson();
-        ToolUtil.copyProperties(param,entity);
+    private Salesperson getEntity(SalespersonParam param) {
+        Salesperson entity = new Salesperson();
+        ToolUtil.copyProperties(param, entity);
         return entity;
-        }
+    }
 
-        }
+}
