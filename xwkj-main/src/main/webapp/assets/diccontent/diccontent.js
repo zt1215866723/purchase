@@ -48,15 +48,14 @@ layui.use(['table', 'admin', 'ax', 'func','form'], function () {
     /**
      * 点击查询按钮
      */
-    // Diccontent.search = function () {
-    //     var queryData = {};
-    //     queryData['name'] = $("#name").val();
-    //     queryData['typeID'] = $("#typeID").val();
-    //     table.reload(Diccontent.tableId, {
-    //         where: queryData, page: {curr: 1}
-    //     });
-    //     return false;
-    // };
+    Diccontent.search = function () {
+        var queryData = {};
+        queryData['name'] = $("#name").val();
+        queryData['typeID'] = $("#typeID").val();
+        table.reload(Diccontent.tableId, {
+            where: queryData, page: {curr: 1}
+        });
+    };
 
     /**
      * 弹出添加对话框
