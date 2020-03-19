@@ -1,6 +1,7 @@
 package com.lfxwkj.purchase.modular.service;
 
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
+import com.lfxwkj.purchase.modular.api.result.HouselayoutVo;
 import com.lfxwkj.purchase.modular.entity.Houselayout;
 import com.lfxwkj.purchase.modular.model.params.HouselayoutParam;
 import com.lfxwkj.purchase.modular.model.result.HouselayoutResult;
@@ -66,4 +67,17 @@ public interface HouselayoutService extends IService<Houselayout> {
          */
         LayuiPageInfo findPageBySpec(HouselayoutParam param);
 
+        /**
+         * 获取主力户型接口， 户型列表接口
+         * @author       : 张童
+         */
+
+        List<HouselayoutVo> houselayoutList(HouselayoutParam param);
+
+        /**
+         * 获取户型详情接口
+         * @author       : 张童
+         */
+
+        HouselayoutVo houselayoutDetails(HouselayoutParam param);
         }

@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.service.impl;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -28,17 +29,20 @@ import java.util.List;
         public class ProjectdynamicServiceImpl extends ServiceImpl<ProjectdynamicMapper, Projectdynamic>implements ProjectdynamicService {
 
         @Override
+        @DataSource(name = "purchase")
         public void add(ProjectdynamicParam param){
     Projectdynamic entity=getEntity(param);
         this.save(entity);
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void delete(ProjectdynamicParam param){
         this.removeById(getKey(param));
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void update(ProjectdynamicParam param){
     Projectdynamic oldEntity=getOldEntity(param);
     Projectdynamic newEntity=getEntity(param);
@@ -47,23 +51,36 @@ import java.util.List;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public ProjectdynamicResult findBySpec(ProjectdynamicParam param){
         return null;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public List<ProjectdynamicResult> findListBySpec(ProjectdynamicParam param){
         return null;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public LayuiPageInfo findPageBySpec(ProjectdynamicParam param){
         Page pageContext=getPageContext();
         IPage page=this.baseMapper.customPageList(pageContext,param);
         return LayuiPageFactory.createPageInfo(page);
         }
 
-        private Serializable getKey(ProjectdynamicParam param){
+    /**
+     *查询项目动态
+     * @param param 项目主键
+     * @return
+     */
+    @Override
+    public List<ProjectdynamicResult> projectDynamicList(ProjectdynamicParam param) {
+        return this.baseMapper.projectDynamicList(param);
+    }
+
+    private Serializable getKey(ProjectdynamicParam param){
                 return param.getId();
         }
 

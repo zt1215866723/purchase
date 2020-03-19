@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.service.impl;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import cn.stylefeng.roses.core.util.ToolUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -29,17 +30,20 @@ import java.util.List;
         public class InfolistServiceImpl extends ServiceImpl<InfolistMapper, Infolist>implements InfolistService {
 
         @Override
+        @DataSource(name = "purchase")
         public void add(InfolistParam param){
     Infolist entity=getEntity(param);
         this.save(entity);
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void delete(InfolistParam param){
         this.removeById(getKey(param));
         }
 
         @Override
+        @DataSource(name = "purchase")
         public void update(InfolistParam param){
     Infolist oldEntity=getOldEntity(param);
     Infolist newEntity=getEntity(param);
@@ -48,23 +52,32 @@ import java.util.List;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public InfolistResult findBySpec(InfolistParam param){
         return null;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public List<InfolistResult> findListBySpec(InfolistParam param){
         return null;
         }
 
         @Override
+        @DataSource(name = "purchase")
         public LayuiPageInfo findPageBySpec(InfolistParam param){
         Page pageContext=getPageContext();
         IPage page=this.baseMapper.customPageList(pageContext,param);
         return LayuiPageFactory.createPageInfo(page);
         }
 
-        private Serializable getKey(InfolistParam param){
+    @Override
+    @DataSource(name = "purchase")
+    public List<InfolistResult> noticeInfoList(InfolistParam param) {
+        return  this.baseMapper.noticeInfoList(param);
+    }
+
+    private Serializable getKey(InfolistParam param){
                 return param.getId();
         }
 
@@ -82,4 +95,9 @@ import java.util.List;
         return entity;
         }
 
+    @Override
+    @DataSource(name = "purchase")
+    public InfolistResult noticeDetails(InfolistParam param) {
+        return  this.baseMapper.noticeDetails(param);
+    }
         }

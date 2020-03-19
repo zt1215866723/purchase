@@ -74,4 +74,10 @@ public interface ProjectinfoMapper extends BaseMapper<Projectinfo> {
      */
     Page<Map<String, Object>> customPageMapList(@Param("page") Page page, @Param("paramCondition") ProjectinfoParam paramCondition);
 
+    /**
+     * 查询销售所属项目信息
+     * @param id 销售主键
+     * @return
+     */
+    List<ProjectinfoResult> projectlistBysalesID(Long id);
 }

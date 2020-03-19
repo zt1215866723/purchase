@@ -1,4 +1,4 @@
-@layout("/common/_container.html",{js:["/assets/assets/houselayout/houselayout.js"]}){
+@layout("/common/_container.html",{js:["/assets/houselayout/houselayout.js"]}){
 
 <div class="layui-body-header">
     <span class="layui-body-header-title">管理</span>
@@ -12,7 +12,7 @@
                     <div class="layui-form toolbar">
                         <div class="layui-form-item">
                             <div class="layui-inline">
-                                <input id="condition" class="layui-input" type="text" placeholder="名称"/>
+                                <input id="layoutName" class="layui-input" type="text" placeholder="名称"/>
                             </div>
                             <div class="layui-inline">
                                 <button id="btnSearch" class="layui-btn icon-btn"><i class="layui-icon">&#xe615;</i>搜索</button>
@@ -31,5 +31,6 @@
 <script type="text/html" id="tableBar">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="upload">上传图片</a>
 </script>
 @}

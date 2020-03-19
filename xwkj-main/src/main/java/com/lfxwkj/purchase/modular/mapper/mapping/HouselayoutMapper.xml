@@ -6,6 +6,7 @@
         <resultMap id="BaseResultMap" type="com.lfxwkj.purchase.modular.entity.Houselayout">
                     <id column="id" property="id"/>
                     <result column="projectID" property="projectID"/>
+                    <result column="houseType" property="houseType"/>
                     <result column="layoutName" property="layoutName"/>
                     <result column="room" property="room"/>
                     <result column="storeyPrice" property="storeyPrice"/>
@@ -13,11 +14,12 @@
                     <result column="saleStatus" property="saleStatus"/>
                     <result column="content" property="content"/>
                     <result column="orderNum" property="orderNum"/>
+                    <result column="isMain" property="isMain"/>
         </resultMap>
 
         <!-- 通用查询结果列 -->
         <sql id="Base_Column_List">
-            id AS "id", projectID AS "projectID", layoutName AS "layoutName", room AS "room", storeyPrice AS "storeyPrice", buildArea AS "buildArea", saleStatus AS "saleStatus", content AS "content", orderNum AS "orderNum"
+            id AS "id", projectID AS "projectID", houseType AS "houseType", layoutName AS "layoutName", room AS "room", storeyPrice AS "storeyPrice", buildArea AS "buildArea", saleStatus AS "saleStatus", content AS "content", orderNum AS "orderNum", isMain AS "isMain"
         </sql>
 
 
@@ -37,8 +39,19 @@
     <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.HouselayoutResult"
             parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutParam">
         select
-        <include refid="Base_Column_List"/>
-        from houselayout where 1 = 1
+          h.*,
+          p.NAME AS projectName,
+          d.`name` AS saleName
+        FROM
+            houselayout h
+            LEFT JOIN projectinfo p on h.projectID = p.id
+            LEFT JOIN diccontent d ON d.id = h.saleStatus
+        where 1 = 1
+            <if test="paramCondition.layoutName != null and paramCondition.layoutName !=''">
+                AND layoutName LIKE CONCAT('%',#{paramCondition.layoutName},'%')
+            </if>
+                AND d.typeID = 4
+        order by orderNum DESC
     </select>
 
     <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutParam">
@@ -47,4 +60,51 @@
         from houselayout where 1 = 1
     </select>
 
+    <select id="houselayoutList" resultType="com.lfxwkj.purchase.modular.api.result.HouselayoutVo">
+        SELECT
+            h.id AS houseId,
+            h.layoutName AS houseName,
+            h.saleStatus AS saleStatus,
+            h.storeyPrice AS storeyPrice,
+            h.buildArea AS buildArea,
+            p.NAME AS projectName,
+            i.imgUrl AS imgUrl
+        FROM
+            houselayout AS h
+            LEFT JOIN houselayoutimg AS i ON i.houseLayID = h.id
+            LEFT JOIN projectinfo AS p ON h.projectID = p.id
+        WHERE
+            1 = 1
+            <if test="paramCondition.projectID != null and paramCondition.projectID !=''">
+                AND h.projectID = #{paramCondition.projectID}
+            </if>
+            <if test="paramCondition.houseType != null and paramCondition.houseType !=''">
+                AND h.houseType = #{paramCondition.houseType}
+            </if>
+            <if test="paramCondition.isMain != null and paramCondition.isMain !=''">
+                AND h.isMain = #{paramCondition.isMain}
+            </if>
+            AND i.isMain = 1
+    </select>
+    <select id="houselayoutDetails" resultType="com.lfxwkj.purchase.modular.api.result.HouselayoutVo"
+            parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutParam">
+        SELECT
+            h.id AS houseId,
+            h.layoutName AS houseName,
+            h.saleStatus AS saleStatus,
+            h.storeyPrice AS storeyPrice,
+            h.buildArea AS buildArea,
+            p.NAME AS projectName,
+            h.content AS content,
+            i.imgUrl AS imgUrl
+        FROM
+            houselayout AS h
+            LEFT JOIN projectinfo AS p ON h.projectID = p.id
+            LEFT JOIN houselayoutimg AS i ON i.houseLayID = h.id
+        WHERE
+            1 = 1
+            <if test="paramCondition.id != null and paramCondition.id !=''">
+                AND h.id = #{paramCondition.id}
+            </if>
+    </select>
 </mapper>

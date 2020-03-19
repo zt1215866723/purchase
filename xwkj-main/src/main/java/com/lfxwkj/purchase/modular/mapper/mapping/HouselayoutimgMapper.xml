@@ -35,12 +35,21 @@
         select
         <include refid="Base_Column_List"/>
         from houselayoutimg where 1 = 1
+        AND houseLayID = #{paramCondition.houseId}
     </select>
 
     <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutimgParam">
         select
         <include refid="Base_Column_List"/>
         from houselayoutimg where 1 = 1
+    </select>
+
+    <select id="getImgUrl" resultType="com.lfxwkj.purchase.modular.model.result.HouselayoutimgResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.HouselayoutimgParam">
+        select
+        <include refid="Base_Column_List"/>
+        from houselayoutimg where 1 = 1
+        AND houseLayID = #{houseId}
     </select>
 
 </mapper>

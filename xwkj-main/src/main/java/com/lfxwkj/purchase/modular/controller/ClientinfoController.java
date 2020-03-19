@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.controller;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Clientinfo;
 import com.lfxwkj.purchase.modular.mapper.ClientinfoMapper;
@@ -111,11 +112,21 @@ public class ClientinfoController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/detail")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData detail(ClientinfoParam clientinfoParam) {
         Clientinfo detail = this.clientinfoService.getById(clientinfoParam.getId());
         return ResponseData.success(detail);
     }
+
+    /**
+     * 将指定的客户指定给指定的销售员
+     *
+     * @author 张童
+     * @Date 2020-03-13
+     */
+    @RequestMapping("/appoint")
+    public String appoint() { return PREFIX + "/clientinfo_appoint.html"; }
 
     /**
      * 查询列表

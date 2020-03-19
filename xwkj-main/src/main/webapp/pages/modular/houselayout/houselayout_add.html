@@ -1,4 +1,4 @@
-@layout("/common/_form.html",{js:["/assets/assets/houselayout/houselayout_add.js"]}){
+@layout("/common/_form.html",{js:["/assets/houselayout/houselayout_add.js"]}){
 
 <form class="layui-form" id="houselayoutForm" lay-filter="houselayoutForm">
     <div class="layui-fluid" style="padding-bottom: 75px;">
@@ -56,6 +56,15 @@
                         <div class="layui-input-block">
                             <input id="orderNum" name="orderNum" placeholder="请输入默认值0，数值越大排前" type="text" class="layui-input" lay-verify="required" required/>
                         </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">是否主力户型<span style="color: red;">*</span></label>
+                    <div class="layui-input-inline layui-show-xs-block">
+                        <select name="isMain" id="isMain">
+                            <option value="1" checked="checked">主力户型</option>
+                            <option value="2">非主力户型</option>
+                        </select>
+                    </div>
                     </div>
                 </div>
             </div>

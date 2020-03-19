@@ -11,7 +11,7 @@
                     <result column="listTitle" property="listTitle"/>
                     <result column="listPicUrl" property="listPicUrl"/>
                     <result column="tagLabel" property="tagLabel"/>
-                    <result column="abstract" property="abstract"/>
+                    <result column="abstrac" property="abstrac"/>
                     <result column="topLevel" property="topLevel"/>
                     <result column="topTime" property="topTime"/>
                     <result column="content" property="content"/>
@@ -21,11 +21,13 @@
                     <result column="readNum" property="readNum"/>
                     <result column="goodNum" property="goodNum"/>
                     <result column="isPlay" property="isPlay"/>
+                    <result column="linkUrl" property="linkUrl"/>
+                    <result column="isShow" property="isShow"/>
         </resultMap>
 
         <!-- 通用查询结果列 -->
         <sql id="Base_Column_List">
-            id AS "id", infoType AS "infoType", projectID AS "projectID", title AS "title", listTitle AS "listTitle", listPicUrl AS "listPicUrl", tagLabel AS "tagLabel", abstract AS "abstract", topLevel AS "topLevel", topTime AS "topTime", content AS "content", createTime AS "createTime", createUserId AS "createUserId", status AS "status", readNum AS "readNum", goodNum AS "goodNum", isPlay AS "isPlay"
+            id AS "id", infoType AS "infoType", projectID AS "projectID", title AS "title", listTitle AS "listTitle", listPicUrl AS "listPicUrl", tagLabel AS "tagLabel", abstrac AS "abstrac", topLevel AS "topLevel", topTime AS "topTime", content AS "content", createTime AS "createTime", createUserId AS "createUserId", status AS "status", readNum AS "readNum", goodNum AS "goodNum", isPlay AS "isPlay", linkUrl AS "linkUrl",isShow AS "isShow"
         </sql>
 
 
@@ -44,9 +46,13 @@
 
     <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.InfolistResult"
             parameterType="com.lfxwkj.purchase.modular.model.params.InfolistParam">
-        select
-        <include refid="Base_Column_List"/>
-        from infolist where 1 = 1
+        SELECT
+            i.*,p.`NAME` AS projectName
+        FROM
+            infolist i
+            left JOIN projectinfo p on i.projectID = p.id
+        WHERE
+            1 = 1
     </select>
 
     <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.InfolistParam">
@@ -55,4 +61,40 @@
         from infolist where 1 = 1
     </select>
 
+    <select id="noticeInfoList" resultType="com.lfxwkj.purchase.modular.model.result.InfolistResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.InfolistParam">
+        SELECT
+            <include refid="Base_Column_List"/>
+        FROM
+            infolist
+        WHERE
+            1 = 1
+            <if test="paramCondition.infoType != null">
+                AND infoType = #{paramCondition.infoType}
+            </if>
+            <if test="paramCondition.projectID != null and paramCondition.projectID !=''">
+                AND projectID = #{paramCondition.projectID}
+            </if>
+            <if test="paramCondition.isShow != null">
+                AND isShow = #{paramCondition.isShow}
+            </if>
+            AND STATUS = 1
+    </select>
+
+    <select id="noticeDetails" resultType="com.lfxwkj.purchase.modular.model.result.InfolistResult"
+            parameterType="com.lfxwkj.purchase.modular.model.params.InfolistParam">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        infolist
+        WHERE
+        1 = 1
+        <if test="paramCondition.infoType != null">
+            AND infoType = #{paramCondition.infoType}
+        </if>
+        <if test="paramCondition.id != null and paramCondition.id !=''">
+            AND id = #{paramCondition.id}
+        </if>
+        AND STATUS = 1
+    </select>
 </mapper>

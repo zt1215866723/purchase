@@ -1,9 +1,10 @@
-layui.use(['table', 'admin', 'ax', 'func'], function () {
+layui.use(['table', 'admin', 'ax', 'func','form'], function () {
     var $ = layui.$;
     var table = layui.table;
     var $ax = layui.ax;
     var admin = layui.admin;
     var func = layui.func;
+    var form = layui.form;
 
     /**
      * 管理
@@ -18,22 +19,39 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
     Diccontent.initColumn = function () {
         return [[
             {type: 'checkbox'},
-            {field: 'id', hide: true, title: ''},
-            {field: 'typeID', sort: true, title: ''},
-            {field: 'name', sort: true, title: ''},
-            {field: 'orderNum', sort: true, title: ''},
-            {field: 'memo', sort: true, title: ''},
-            {field: 'state', sort: true, title: '0 删除 1正常'},
+            // {field: 'id', hide: true, title: ''},
+            // {field: 'typeID', sort: true, title: ''},
+            {field: 'name', sort: true, title: '字典值'},
+            {field: 'orderNum', sort: true, title: '序号'},
+            {field: 'memo', sort: true, title: '备注'},
+            // {field: 'state', sort: true, title: '0 删除 1正常'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };
+
+    /*
+    加载字典数据类型
+     */
+    var ajax = new $ax(Feng.ctxPath + "/dictype/list", function (data) {
+        $("#typeID").empty();
+        $("#typeID").append("<option value=''>请选择字典类型</option>")
+        $.each(data.data,function (index,item) {
+            $("#typeID").append("<option value='"+item.id+"'>"+item.dictype+"</option>")
+        })
+        form.render('select')
+    }, function (data) {
+        Feng.error("加载字典数据类型错误！" + data.responseJSON.message)
+    });
+    ajax.start();
+
 
     /**
      * 点击查询按钮
      */
     Diccontent.search = function () {
         var queryData = {};
-        queryData['condition'] = $("#condition").val();
+        queryData['name'] = $("#name").val();
+        queryData['typeID'] = $("#typeID").val();
         table.reload(Diccontent.tableId, {
             where: queryData, page: {curr: 1}
         });

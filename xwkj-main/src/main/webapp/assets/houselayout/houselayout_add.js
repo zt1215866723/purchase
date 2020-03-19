@@ -10,7 +10,8 @@ var HouselayoutInfoDlg = {
         buildArea: "",
         saleStatus: "",
         content: "",
-        orderNum: ""
+        orderNum: "",
+        isMain:""
     }
 };
 
@@ -22,7 +23,9 @@ layui.use(['form', 'admin', 'ax'], function () {
 
     //表单提交事件
     form.on('submit(btnSubmit)', function (data) {
+        console.log(data)
         var ajax = new $ax(Feng.ctxPath + "/houselayout/addItem", function (data) {
+            console.log(data)
             Feng.success("添加成功！");
 
             //传给上个页面，刷新table用
@@ -32,6 +35,7 @@ layui.use(['form', 'admin', 'ax'], function () {
             admin.closeThisDialog();
 
         }, function (data) {
+            console.log(data)
             Feng.error("添加失败！" + data.responseJSON.message)
         });
         ajax.set(data.field);

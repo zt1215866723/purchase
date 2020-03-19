@@ -18,14 +18,16 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
     Salesperson.initColumn = function () {
         return [[
             {type: 'checkbox'},
-            {field: 'id', hide: true, title: ''},
-            {field: 'name', sort: true, title: ''},
-            {field: 'picUrl', sort: true, title: ''},
-            {field: 'tel', sort: true, title: ''},
-            {field: 'weChatNo', sort: true, title: ''},
-            {field: 'QRCodeUrl', sort: true, title: ''},
-            {field: 'goodNum', sort: true, title: ''},
-            {field: 'serviceNum', sort: true, title: ''},
+            // {field: 'id', hide: true, title: ''},
+            {field: 'name', sort: true, title: '销售名字'},
+            // {field: 'picUrl', sort: true, title: ''},
+            {field: 'tel', sort: true, title: '电话'},
+            {field: 'weChatNo', sort: true, title: '微信号'},
+            // {field: 'QRCodeUrl', sort: true, title: ''},
+            // {field: 'goodNum', sort: true, title: ''},
+            {field: 'serviceNum', sort: true, title: '服务人数'},
+            // {field: 'saleSign', sort: true, title: '个性签名'},
+            {field: 'salePosition', sort: true, title: '职位'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };
@@ -35,7 +37,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      */
     Salesperson.search = function () {
         var queryData = {};
-        queryData['condition'] = $("#condition").val();
+        queryData['name'] = $("#condition").val();
         table.reload(Salesperson.tableId, {
             where: queryData, page: {curr: 1}
         });

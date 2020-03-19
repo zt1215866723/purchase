@@ -28,17 +28,20 @@ import java.util.List;
 public class ClientinfoServiceImpl extends ServiceImpl<ClientinfoMapper, Clientinfo> implements ClientinfoService {
 
     @Override
+    @DataSource(name = "purchase")
     public void add(ClientinfoParam param) {
         Clientinfo entity = getEntity(param);
         this.save(entity);
     }
 
     @Override
+    @DataSource(name = "purchase")
     public void delete(ClientinfoParam param) {
         this.removeById(getKey(param));
     }
 
     @Override
+    @DataSource(name = "purchase")
     public void update(ClientinfoParam param) {
         Clientinfo oldEntity = getOldEntity(param);
         Clientinfo newEntity = getEntity(param);
@@ -47,11 +50,13 @@ public class ClientinfoServiceImpl extends ServiceImpl<ClientinfoMapper, Clienti
     }
 
     @Override
+    @DataSource(name = "purchase")
     public ClientinfoResult findBySpec(ClientinfoParam param) {
         return null;
     }
 
     @Override
+    @DataSource(name = "purchase")
     public List<ClientinfoResult> findListBySpec(ClientinfoParam param) {
         return null;
     }

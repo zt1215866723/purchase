@@ -18,9 +18,9 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
     Dictype.initColumn = function () {
         return [[
             {type: 'checkbox'},
-            {field: 'id', hide: true, title: ''},
-            {field: 'dictype', sort: true, title: ''},
-            {field: 'memo', sort: true, title: ''},
+            // {field: 'id', hide: true, title: ''},
+            {field: 'dictype', sort: true, title: '字典类型名'},
+            {field: 'memo', sort: true, title: '备注'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };
@@ -30,7 +30,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      */
     Dictype.search = function () {
         var queryData = {};
-        queryData['condition'] = $("#condition").val();
+        queryData['dictype'] = $("#condition").val();
         table.reload(Dictype.tableId, {
             where: queryData, page: {curr: 1}
         });

@@ -22,6 +22,8 @@ public class HouselayoutResult implements Serializable {
 
         private Long id;
 
+        private Long houseType;
+
         private Long projectID;
 
             /**
@@ -57,4 +59,12 @@ public class HouselayoutResult implements Serializable {
              */
         private Integer orderNum;
 
+            /**
+            * 1是主力户型，2不是主力户型
+            */
+        private Integer isMain;
+
+        private String projectName;
+
+        private String saleName;
 }

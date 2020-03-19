@@ -2,9 +2,8 @@ package com.lfxwkj.purchase.modular.model.result;
 
 import lombok.Data;
 
-import java.util.Date;
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * <p>

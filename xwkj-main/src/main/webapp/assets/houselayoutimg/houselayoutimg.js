@@ -21,10 +21,8 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             {field: 'id', hide: true, title: ''},
             {field: 'houseLayID', sort: true, title: ''},
             {field: 'imgUrl', sort: true, title: ''},
-            {field: 'isMain', sort: true, title: '主图显示在户型列表,默认为0 勾选为1 则主图
-            '},
-            {field: 'orderNum', sort: true, title: '某户型中轮播显示户型图的顺序，默认为0，数值越大排前
-            '},
+            {field: 'isMain', sort: true, title: '主图显示在户型列表,默认为0 勾选为1 则主图'},
+            {field: 'orderNum', sort: true, title: '某户型中轮播显示户型图的顺序，默认为0，数值越大排前'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };
@@ -43,10 +41,11 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
     /**
      * 弹出添加对话框
      */
-    Houselayoutimg.openAddDlg = function () {
+    Houselayoutimg.openAddDlg = function (data) {
+        console.log(data)
         func.open({
             title: '添加',
-            content: Feng.ctxPath + '/houselayoutimg/add',
+            content: Feng.ctxPath + '/houselayoutimg/add?id=' + data.id,
             tableId: Houselayoutimg.tableId
         });
     };
@@ -98,7 +97,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
     // 渲染表格
     var tableResult = table.render({
         elem: '#' + Houselayoutimg.tableId,
-        url: Feng.ctxPath + '/houselayoutimg/list',
+        url: Feng.ctxPath + '/houselayoutimg/list?houseLayID=' + Feng.getUrlParam("id"),
         page: true,
         height: "full-158",
         cellMinWidth: 100,

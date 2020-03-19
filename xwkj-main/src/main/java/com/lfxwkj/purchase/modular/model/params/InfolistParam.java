@@ -70,6 +70,9 @@ public class InfolistParam implements Serializable, BaseValidatingParam {
              */
         private Integer isPlay;
 
+        private String linkUrl;
+
+        private Integer isShow;
     @Override
     public String checkParam() {
         return null;

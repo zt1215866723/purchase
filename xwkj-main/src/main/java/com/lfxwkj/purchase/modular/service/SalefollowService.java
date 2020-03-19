@@ -5,6 +5,7 @@ import com.lfxwkj.purchase.modular.entity.Salefollow;
 import com.lfxwkj.purchase.modular.model.params.SalefollowParam;
 import com.lfxwkj.purchase.modular.model.result.SalefollowResult;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lfxwkj.purchase.modular.model.result.SalespersonResult;
 
 import java.util.List;
 
@@ -66,4 +67,10 @@ public interface SalefollowService extends IService<Salefollow> {
          */
         LayuiPageInfo findPageBySpec(SalefollowParam param);
 
+        /**
+         * 根据客户查询销售顾问名片
+         *
+         * @author 王雷
+         */
+        List<SalespersonResult> salefollowlist(SalefollowParam param);
         }

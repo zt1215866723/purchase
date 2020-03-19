@@ -8,11 +8,12 @@
                     <result column="projectID" property="projectID"/>
                     <result column="salespersonID" property="salespersonID"/>
                     <result column="orderNum" property="orderNum"/>
+                    <result column="isMain" property="isMain"/>
         </resultMap>
 
         <!-- 通用查询结果列 -->
         <sql id="Base_Column_List">
-            id AS "id", projectID AS "projectID", salespersonID AS "salespersonID", orderNum AS "orderNum"
+            id AS "id", projectID AS "projectID", salespersonID AS "salespersonID", orderNum AS "orderNum",isMain as "isMain"
         </sql>
 
 
@@ -31,15 +32,36 @@
 
     <select id="customPageList" resultType="com.lfxwkj.purchase.modular.model.result.ProjectsalespersonResult"
             parameterType="com.lfxwkj.purchase.modular.model.params.ProjectsalespersonParam">
-        select
-        <include refid="Base_Column_List"/>
-        from projectsalesperson where 1 = 1
+        select k.name as "projectinfoName",n.name as "salespersonName",t.id AS "id", t.projectID AS "projectID", t.salespersonID AS "salespersonID",
+                     t.orderNum AS "orderNum",t.isMain as "isMain"
+        from projectsalesperson t
+        left join projectinfo k on k.id = t.`projectID`
+        left join `salesperson` n on n.`id` = t.`salespersonID`
+        where 1 = 1
+        <if test="paramCondition.projectinfoName != null and paramCondition.projectinfoName !=''">
+            and k.name like concat('%',#{paramCondition.projectinfoName},'%')
+        </if>
+         <if test="paramCondition.salespersonName != null and paramCondition.salespersonName !=''">
+            and n.name like concat('%',#{paramCondition.salespersonName},'%')
+        </if>
+        order by t.orderNum desc
     </select>
 
     <select id="customPageMapList" resultType="map" parameterType="com.lfxwkj.purchase.modular.model.params.ProjectsalespersonParam">
         select
         <include refid="Base_Column_List"/>
         from projectsalesperson where 1 = 1
+    </select>
+
+    <select id="projectSalespersonList" resultType="com.lfxwkj.purchase.modular.model.vo.ProjectsalepersonListVo">
+        select k.`name`,k.`picUrl`,k.`tel`
+        from projectsalesperson t
+        left join `salesperson` k on k.`id` = t.`salespersonID`
+        where t.`projectID` = #{projectID}
+        order by k.`goodNum` desc
+        <if test="nums != null">
+            limit #{nums}
+        </if>
     </select>
 
 </mapper>

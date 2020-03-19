@@ -5,6 +5,7 @@ import com.lfxwkj.purchase.modular.entity.Salesperson;
 import com.lfxwkj.purchase.modular.model.params.SalespersonParam;
 import com.lfxwkj.purchase.modular.model.result.SalespersonResult;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lfxwkj.purchase.modular.model.vo.SalespersonVo;
 
 import java.util.List;
 
@@ -66,4 +67,10 @@ public interface SalespersonService extends IService<Salesperson> {
          */
         LayuiPageInfo findPageBySpec(SalespersonParam param);
 
-        }
+    /**
+     * 查询销售顾问名片
+     * @param id 顾问的主键
+     * @return
+     */
+    SalespersonVo salespersonDetail(Long id);
+}

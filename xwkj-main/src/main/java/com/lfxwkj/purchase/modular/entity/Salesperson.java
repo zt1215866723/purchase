@@ -43,6 +43,38 @@ public class Salesperson implements Serializable {
     @TableField("serviceNum")
     private Integer serviceNum;
 
+    @TableField("saleSign")
+    private String saleSign;
+
+    @TableField("salePosition")
+    private String salePosition;
+
+    @TableField("status")
+    private Integer status;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getSaleSign() {
+        return saleSign;
+    }
+
+    public void setSaleSign(String saleSign) {
+        this.saleSign = saleSign;
+    }
+
+    public String getSalePosition() {
+        return salePosition;
+    }
+
+    public void setSalePosition(String salePosition) {
+        this.salePosition = salePosition;
+    }
 
     public Long getId() {
         return id;
@@ -111,14 +143,17 @@ public class Salesperson implements Serializable {
     @Override
     public String toString() {
         return "Salesperson{" +
-        "id=" + id +
-        ", name=" + name +
-        ", picUrl=" + picUrl +
-        ", tel=" + tel +
-        ", weChatNo=" + weChatNo +
-        ", QRCodeUrl=" + QRCodeUrl +
-        ", goodNum=" + goodNum +
-        ", serviceNum=" + serviceNum +
-        "}";
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", picUrl='" + picUrl + '\'' +
+                ", tel='" + tel + '\'' +
+                ", weChatNo='" + weChatNo + '\'' +
+                ", QRCodeUrl='" + QRCodeUrl + '\'' +
+                ", goodNum=" + goodNum +
+                ", serviceNum=" + serviceNum +
+                ", saleSign='" + saleSign + '\'' +
+                ", salePosition='" + salePosition + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

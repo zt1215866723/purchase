@@ -42,4 +42,17 @@
         from salefollow where 1 = 1
     </select>
 
+    <select id="saleFollowBysalesID" resultType="com.lfxwkj.purchase.modular.model.vo.SaleFollowVo">
+        select t.`followTime` as "time",k.`name` as "content"
+        from salefollow t
+        left join clientinfo k on k.`id` = t.`clientID`
+        where t.`salesID` = #{value}
+    </select>
+
+    <select id="salefollowlist" resultType="com.lfxwkj.purchase.modular.model.result.SalespersonResult" parameterType="com.lfxwkj.purchase.modular.model.params.SalefollowParam">
+        select k.id,k.tel,k.picUrl,k.name
+        from salefollow t
+        left join salesperson k on k.id = t.`salesID`
+        where t.`clientID` = #{clientID}
+    </select>
 </mapper>

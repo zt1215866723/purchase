@@ -29,4 +29,5 @@ public class ClientinfoResult implements Serializable {
              */
         private String phone;
 
+        private String name;
 }

@@ -19,8 +19,9 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
         return [[
             {type: 'checkbox'},
             {field: 'id', hide: true, title: ''},
-            {field: 'openID', sort: true, title: ''},
-            {field: 'phone', sort: true, title: '授权的电话'},
+            {field: 'openID', hide: true, title: ''},
+            {field: 'phone', sort: true, title: '电话'},
+            {field: 'name', sort: true, title: '姓名'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };
@@ -30,7 +31,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      */
     Clientinfo.search = function () {
         var queryData = {};
-        queryData['condition'] = $("#condition").val();
+        queryData['name'] = $("#name").val();
         table.reload(Clientinfo.tableId, {
             where: queryData, page: {curr: 1}
         });
@@ -125,6 +126,21 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             Clientinfo.openEditDlg(data);
         } else if (layEvent === 'delete') {
             Clientinfo.onDeleteItem(data);
+        }else if (layEvent === 'appoint') {
+            Clientinfo.onAppointItem(data);
         }
     });
+    /**
+     * 点击指定销售员
+     *
+     * @param data 点击按钮时候的行数据
+     */
+    Clientinfo.onAppointItem = function (data) {
+        console.log(data.id)
+        func.open({
+            title: '制定销售员',
+            content: Feng.ctxPath + '/clientinfo/appoint?id=' + data.id,
+            tableId: Clientinfo.tableId
+        });
+    };
 });

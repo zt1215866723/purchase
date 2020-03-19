@@ -1,4 +1,4 @@
-@layout("/common/_form.html",{js:["/assets/assets/projectsalesperson/projectsalesperson_add.js"]}){
+@layout("/common/_form.html",{js:["/assets/projectsalesperson/projectsalesperson_add.js"]}){
 
 <form class="layui-form" id="projectsalespersonForm" lay-filter="projectsalespersonForm">
     <div class="layui-fluid" style="padding-bottom: 75px;">
@@ -8,21 +8,34 @@
                 <div class="layui-form-item layui-row">
                     <input name="id" type="hidden"/>
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <label class="layui-form-label">项目<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
-                            <input id="projectID" name="projectID" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                            <select name="projectID" id="projectID" class="layui-select" lay-search lay-filter="projectID" lay-verify="required" required>
+
+                            </select>
+                            <!--<input id="projectID" name="projectID" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>-->
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label"><span style="color: red;">*</span></label>
+                        <label class="layui-form-label">销售<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
-                            <input id="salespersonID" name="salespersonID" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>
+                            <select name="salespersonID" id="salespersonID" class="layui-select" lay-filter="salespersonID" lay-search lay-verify="required" required>
+
+                            </select>
+                            <!--<input id="salespersonID" name="salespersonID" placeholder="请输入" type="text" class="layui-input" lay-verify="required" required/>-->
                         </div>
                     </div>
                     <div class="layui-inline layui-col-md12">
-                        <label class="layui-form-label">默认为0  值越大靠前<span style="color: red;">*</span></label>
+                        <label class="layui-form-label">排序号<span style="color: red;">*</span></label>
                         <div class="layui-input-block">
-                            <input id="orderNum" name="orderNum" placeholder="请输入默认为0  值越大靠前" type="text" class="layui-input" lay-verify="required" required/>
+                            <input id="orderNum" name="orderNum" placeholder="请输入默认为0  值越大靠前" type="number" class="layui-input" lay-verify="" />
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label">首页展示<span style="color: red;">*</span></label>
+                        <div class="layui-input-block">
+                            <input id="isMain" name="isMain" placeholder="" value="1" lay-skin="primary" type="checkbox" class="layui-input" lay-verify="" />
+                            <!--<input type="checkbox" name="" title="写作" checked>-->
                         </div>
                     </div>
                 </div>

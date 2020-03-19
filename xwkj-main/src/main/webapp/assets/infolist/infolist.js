@@ -19,24 +19,46 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
         return [[
             {type: 'checkbox'},
             {field: 'id', hide: true, title: ''},
-            {field: 'infoType', sort: true, title: '1、新闻
-            2、公告
-            3、项目新闻'},
-            {field: 'projectID', sort: true, title: ''},
-            {field: 'title', sort: true, title: ''},
-            {field: 'listTitle', sort: true, title: ''},
-            {field: 'listPicUrl', sort: true, title: ''},
-            {field: 'tagLabel', sort: true, title: ''},
-            {field: 'abstract', sort: true, title: ''},
+            {field: 'infoType', sort: true, title: '文章类型',templet:function (d) {
+                    var state ="";
+                    if (d.infoType == '1') {
+                        state ="公司新闻";
+                    } else if (d.infoType == '2') {
+                        state ="公告";
+                    } else if (d.infoType == '3') {
+                        state ="项目新闻";
+                    } else if (d.infoType == '4') {
+                        state ="公司介绍";
+                    } else if (d.infoType == '5') {
+                        state ="轮播图";
+                    }
+                    return state;
+                }},
+            {field: 'projectName', sort: true, title: '项目名称'},
+            {field: 'title', sort: true, title: '信息标题'},
+            {field: 'listTitle', sort: true, title: '列表标题'},
+            {field: 'listPicUrl', sort: true, title: '列表图片'},
+            {field: 'tagLabel', sort: true, title: 'tag标签'},
+            {field: 'abstract', sort: true, title: '摘要'},
             {field: 'topLevel', sort: true, title: '消息置顶级别，默认为0，值越大，越靠前。后台、前台该类信息显示，根据固顶级别 、发布时间  降序进行排序显示'},
-            {field: 'topTime', sort: true, title: ''},
-            {field: 'content', sort: true, title: ''},
-            {field: 'createTime', sort: true, title: ''},
-            {field: 'createUserId', sort: true, title: ''},
-            {field: 'status', sort: true, title: '0 删除 1发布 2暂存'},
-            {field: 'readNum', sort: true, title: ''},
-            {field: 'goodNum', sort: true, title: ''},
-            {field: 'isPlay', sort: true, title: '默认值0  不轮播，1则轮播显示。（注：轮播默认显示状态为1的前几个）'},
+            {field: 'topTime', sort: true, title: 'top时间'},
+            {field: 'content', sort: true, title: '内容'},
+            {field: 'createTime', sort: true, title: '发布时间'},
+            {field: 'createUserId', sort: true, title: '发布人'},
+            {field: 'status', sort: true, title: '文章状态',templet:function (d) {
+                    var state ="";
+                    if (d.status == '0') {
+                        state ="删除";
+                    } else if (d.status == '1') {
+                        state ="发布";
+                    } else if (d.status == '2') {
+                        state ="暂存";
+                    }
+                    return state;
+                }},
+            {field: 'readNum', sort: true, title: '阅读数'},
+            {field: 'goodNum', sort: true, title: '点赞数'},
+            {field: 'isPlay', sort: true, title: '是否轮播'},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };

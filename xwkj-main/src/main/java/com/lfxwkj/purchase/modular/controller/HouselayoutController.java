@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.controller;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Houselayout;
 import com.lfxwkj.purchase.modular.model.params.HouselayoutParam;
@@ -8,6 +9,7 @@ import cn.stylefeng.roses.core.base.controller.BaseController;
 import cn.stylefeng.roses.kernel.model.response.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/houselayout")
 public class HouselayoutController extends BaseController {
 
-    private String PREFIX = "/assets/houselayout";
+    private String PREFIX = "/modular/houselayout";
 
     @Autowired
     private HouselayoutService houselayoutService;
@@ -58,6 +60,17 @@ public class HouselayoutController extends BaseController {
     @RequestMapping("/edit")
     public String edit() {
         return PREFIX + "/houselayout_edit.html";
+    }
+
+    /**
+     * 上传户型图片页面
+     *
+     * @author 张童
+     * @Date 2020-03-13
+     */
+    @RequestMapping("/upload")
+    public String upload() {
+        return "/modular/houselayoutimg/houselayoutimg.html";
     }
 
     /**
@@ -106,6 +119,7 @@ public class HouselayoutController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/detail")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData detail(HouselayoutParam houselayoutParam) {
         Houselayout detail = this.houselayoutService.getById(houselayoutParam.getId());

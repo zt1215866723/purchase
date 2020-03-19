@@ -36,7 +36,10 @@ import java.util.List;
 
         @Override
         public void delete(DiccontentParam param){
-        this.removeById(getKey(param));
+            Diccontent diccontent = new Diccontent();
+            diccontent.setId(param.getId());
+            diccontent.setState(0);
+            this.updateById(diccontent);
         }
 
         @Override

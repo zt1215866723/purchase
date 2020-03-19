@@ -1,0 +1,35 @@
+@layout("/common/_form.html",{js:["/assets/clientinfo/clientinfo_appoint.js"]}){
+
+<form class="layui-form" id="salefollowForm" lay-filter="salefollowForm">
+    <div class="layui-fluid" style="padding-bottom: 75px;">
+        <div class="layui-card">
+            <div class="layui-card-header">基本信息</div>
+            <div class="layui-card-body">
+                <div class="layui-form-item layui-row">
+                    <input name="id" id="id" type="hidden"/>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span>销售员姓名</label>
+                        <div class="layui-input-inline">
+                            <select name="salePerson" id="salePerson">
+                                <option value="">请选择销售员</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md12">
+                        <label class="layui-form-label"><span style="color: red;">*</span>顾客姓名</label>
+                        <div class="layui-input-block">
+                            <input id="name" name="name" placeholder="请输入" type="text" class="layui-input" readonly="readonly"  lay-verify="required" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group-bottom text-center">
+        <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+        <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+    </div>
+
+</form>
+
+@}

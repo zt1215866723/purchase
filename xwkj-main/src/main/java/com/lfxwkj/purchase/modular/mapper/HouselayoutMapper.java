@@ -1,11 +1,14 @@
 package com.lfxwkj.purchase.modular.mapper;
 
+import com.lfxwkj.purchase.modular.api.result.HouselayoutVo;
 import com.lfxwkj.purchase.modular.entity.Houselayout;
 import com.lfxwkj.purchase.modular.model.params.HouselayoutParam;
+import com.lfxwkj.purchase.modular.model.params.ProjectinfoParam;
 import com.lfxwkj.purchase.modular.model.result.HouselayoutResult;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lfxwkj.purchase.modular.model.result.ProjectinfoResult;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -53,4 +56,15 @@ public interface HouselayoutMapper extends BaseMapper<Houselayout> {
          */
         Page<Map<String, Object>>customPageMapList(@Param("page") Page page, @Param("paramCondition") HouselayoutParam paramCondition);
 
+        /**
+         * 手机端主力户型接口， 户型列表的方法
+         * 张童
+         */
+        List<HouselayoutVo> houselayoutList(@Param("paramCondition")HouselayoutParam paramCondition);
+
+        /**
+         * 手机端户型详情方法
+         * 张童
+         */
+        HouselayoutVo houselayoutDetails(@Param("paramCondition")HouselayoutParam paramCondition);
         }

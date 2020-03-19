@@ -19,15 +19,23 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
         return [[
             {type: 'checkbox'},
             {field: 'id', hide: true, title: ''},
-            {field: 'projectID', sort: true, title: ''},
-            {field: 'layoutName', sort: true, title: '如：
-            A2户型'},
-            {field: 'room', sort: true, title: '如：二室二厅一卫'},
-            {field: 'storeyPrice', sort: true, title: '如：约75万元/套'},
-            {field: 'buildArea', sort: true, title: '如：105'},
-            {field: 'saleStatus', sort: true, title: '该户型销售状态：在售、待售等'},
-            {field: 'content', sort: true, title: ''},
-            {field: 'orderNum', sort: true, title: '默认值0，数值越大排前'},
+            {field: 'projectName', sort: true, title: '项目名称'},
+            {field: 'layoutName', sort: true, title: '户型名称'},
+            {field: 'room', sort: true, title: '房间情况'},
+            {field: 'storeyPrice', sort: true, title: '每套价格'},
+            {field: 'buildArea', sort: true, title: '建筑面积'},
+            {field: 'saleName', sort: true, title: '户型销售状态'},
+            {field: 'content', sort: true, title: '户型解析'},
+            {field: 'orderNum', hide:true, title: '户型顺序'},
+            {field: 'main', sort: true, title: '主力户型',templet:function (d) {
+                    var main = "";
+                    if (d.isMain == "1") {
+                        main = "<font color='red'>主力户型</font>";
+                    } else if(d.isMain == "2"){
+                        main = "<font >非主力户型</font>";
+                    }
+                    return main;
+                }},
             {align: 'center', toolbar: '#tableBar', title: '操作'}
         ]];
     };
@@ -37,7 +45,7 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
      */
     Houselayout.search = function () {
         var queryData = {};
-        queryData['condition'] = $("#condition").val();
+        queryData['layoutName'] = $("#layoutName").val();
         table.reload(Houselayout.tableId, {
             where: queryData, page: {curr: 1}
         });
@@ -132,6 +140,23 @@ layui.use(['table', 'admin', 'ax', 'func'], function () {
             Houselayout.openEditDlg(data);
         } else if (layEvent === 'delete') {
             Houselayout.onDeleteItem(data);
+        }else if (layEvent === 'upload') {
+            Houselayout.openUploadDlg(data);
         }
     });
+
+    /**
+     * 点击上传图片
+     *
+     * @param data 点击按钮时候的行数据
+     */
+    Houselayout.openUploadDlg = function (data) {
+        console.log(data.id)
+        func.open({
+            title: '上传图片',
+            content: Feng.ctxPath + '/houselayout/upload?id=' + data.id,
+            tableId: Houselayout.tableId
+        });
+    };
+
 });

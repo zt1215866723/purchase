@@ -1,5 +1,6 @@
 package com.lfxwkj.purchase.modular.controller;
 
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Infolist;
 import com.lfxwkj.purchase.modular.model.params.InfolistParam;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/infolist")
 public class InfolistController extends BaseController {
 
-    private String PREFIX = "/assets/infolist";
+    private String PREFIX = "/modular/infolist";
 
     @Autowired
     private InfolistService infolistService;
@@ -106,6 +107,7 @@ public class InfolistController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/detail")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData detail(InfolistParam infolistParam) {
         Infolist detail = this.infolistService.getById(infolistParam.getId());

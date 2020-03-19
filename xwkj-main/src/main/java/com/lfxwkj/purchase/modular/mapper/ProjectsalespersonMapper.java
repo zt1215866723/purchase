@@ -1,11 +1,11 @@
 package com.lfxwkj.purchase.modular.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lfxwkj.purchase.modular.entity.Projectsalesperson;
 import com.lfxwkj.purchase.modular.model.params.ProjectsalespersonParam;
 import com.lfxwkj.purchase.modular.model.result.ProjectsalespersonResult;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lfxwkj.purchase.modular.model.vo.ProjectsalepersonListVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -53,4 +53,12 @@ public interface ProjectsalespersonMapper extends BaseMapper<Projectsalesperson>
          */
         Page<Map<String, Object>>customPageMapList(@Param("page") Page page, @Param("paramCondition") ProjectsalespersonParam paramCondition);
 
-        }
+        /**
+         * 查询项目顾问列表
+         * @param projectID 项目主键
+         * @param nums 请求条数 按照点赞数降序
+         * @return
+         */
+    List<ProjectsalepersonListVo> projectSalespersonList(@Param("projectID") Long projectID,@Param("nums") Long nums);
+
+}
