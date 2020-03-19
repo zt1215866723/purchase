@@ -1,12 +1,13 @@
 package com.lfxwkj.purchase.modular.controller;
 
 
+import cn.stylefeng.roses.core.base.controller.BaseController;
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
+import cn.stylefeng.roses.kernel.model.response.ResponseData;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Diccontent;
 import com.lfxwkj.purchase.modular.model.params.DiccontentParam;
 import com.lfxwkj.purchase.modular.service.DiccontentService;
-import cn.stylefeng.roses.core.base.controller.BaseController;
-import cn.stylefeng.roses.kernel.model.response.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/diccontent")
 public class DiccontentController extends BaseController {
 
-    private String PREFIX = "/xwkj-main/diccontent";
+    private String PREFIX = "/modular/diccontent";
 
     @Autowired
     private DiccontentService diccontentService;
@@ -68,6 +69,7 @@ public class DiccontentController extends BaseController {
      * @Date 2020-03-13
      */
     @RequestMapping("/addItem")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData addItem(DiccontentParam diccontentParam) {
         this.diccontentService.add(diccontentParam);
@@ -80,6 +82,7 @@ public class DiccontentController extends BaseController {
      * @author 郭晓东
      * @Date 2020-03-13
      */
+    @DataSource(name = "purchase")
     @RequestMapping("/editItem")
     @ResponseBody
     public ResponseData editItem(DiccontentParam diccontentParam) {
@@ -94,6 +97,7 @@ public class DiccontentController extends BaseController {
      * @Date 2020-03-13
      */
     @RequestMapping("/delete")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData delete(DiccontentParam diccontentParam) {
         this.diccontentService.delete(diccontentParam);
@@ -107,6 +111,7 @@ public class DiccontentController extends BaseController {
      * @Date 2020-03-13
      */
     @RequestMapping("/detail")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData detail(DiccontentParam diccontentParam) {
         Diccontent detail = this.diccontentService.getById(diccontentParam.getId());
@@ -121,6 +126,7 @@ public class DiccontentController extends BaseController {
      */
     @ResponseBody
     @RequestMapping("/list")
+    @DataSource(name = "purchase")
     public LayuiPageInfo list(DiccontentParam diccontentParam) {
         return this.diccontentService.findPageBySpec(diccontentParam);
     }

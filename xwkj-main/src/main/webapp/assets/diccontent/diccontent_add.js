@@ -17,6 +17,20 @@ layui.use(['form', 'admin', 'ax'], function () {
     var form = layui.form;
     var admin = layui.admin;
 
+    /*
+    加载字典数据类型
+     */
+    var ajax = new $ax(Feng.ctxPath + "/dictype/list", function (data) {
+        $("#typeID").empty();
+        $.each(data.data,function (index,item) {
+            $("#typeID").append("<option value='"+item.id+"'>"+item.dictype+"</option>")
+        })
+        form.render('select')
+    }, function (data) {
+        Feng.error("加载字典数据类型错误！" + data.responseJSON.message)
+    });
+    ajax.start();
+
     //表单提交事件
     form.on('submit(btnSubmit)', function (data) {
         var ajax = new $ax(Feng.ctxPath + "/diccontent/addItem", function (data) {

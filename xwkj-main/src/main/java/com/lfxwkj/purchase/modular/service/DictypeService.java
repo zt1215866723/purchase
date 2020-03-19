@@ -1,10 +1,10 @@
 package com.lfxwkj.purchase.modular.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Dictype;
 import com.lfxwkj.purchase.modular.model.params.DictypeParam;
 import com.lfxwkj.purchase.modular.model.result.DictypeResult;
-import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
 
@@ -66,4 +66,4 @@ public interface DictypeService extends IService<Dictype> {
          */
         LayuiPageInfo findPageBySpec(DictypeParam param);
 
-        }
+}

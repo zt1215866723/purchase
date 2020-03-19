@@ -1,11 +1,12 @@
 package com.lfxwkj.purchase.modular.controller;
 
+import cn.stylefeng.roses.core.base.controller.BaseController;
+import cn.stylefeng.roses.core.mutidatasource.annotion.DataSource;
+import cn.stylefeng.roses.kernel.model.response.ResponseData;
 import com.lfxwkj.purchase.base.pojo.page.LayuiPageInfo;
 import com.lfxwkj.purchase.modular.entity.Dictype;
 import com.lfxwkj.purchase.modular.model.params.DictypeParam;
 import com.lfxwkj.purchase.modular.service.DictypeService;
-import cn.stylefeng.roses.core.base.controller.BaseController;
-import cn.stylefeng.roses.kernel.model.response.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/dictype")
 public class DictypeController extends BaseController {
 
-    private String PREFIX = "/assets/dictype";
+    private String PREFIX = "/modular/dictype";
 
     @Autowired
     private DictypeService dictypeService;
@@ -67,6 +68,7 @@ public class DictypeController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/addItem")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData addItem(DictypeParam dictypeParam) {
         this.dictypeService.add(dictypeParam);
@@ -80,6 +82,7 @@ public class DictypeController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/editItem")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData editItem(DictypeParam dictypeParam) {
         this.dictypeService.update(dictypeParam);
@@ -93,6 +96,7 @@ public class DictypeController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/delete")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData delete(DictypeParam dictypeParam) {
         this.dictypeService.delete(dictypeParam);
@@ -106,6 +110,7 @@ public class DictypeController extends BaseController {
      * @Date 2020-03-12
      */
     @RequestMapping("/detail")
+    @DataSource(name = "purchase")
     @ResponseBody
     public ResponseData detail(DictypeParam dictypeParam) {
         Dictype detail = this.dictypeService.getById(dictypeParam.getId());
@@ -119,6 +124,7 @@ public class DictypeController extends BaseController {
      * @Date 2020-03-12
      */
     @ResponseBody
+    @DataSource(name = "purchase")
     @RequestMapping("/list")
     public LayuiPageInfo list(DictypeParam dictypeParam) {
         return this.dictypeService.findPageBySpec(dictypeParam);
